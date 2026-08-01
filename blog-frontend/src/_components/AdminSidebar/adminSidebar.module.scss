@@ -1,0 +1,37 @@
+@use "../../variables" as v;
+@use "../../mixins" as m;
+
+.adminSidebar {
+  width: 300px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__lists {
+    list-style: none;
+    display: grid;
+    gap: 20px;
+  }
+
+  &__link {
+    width: 250px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: v.$color-text-secondary;
+    background-color: transparent;
+    border: 1px solid v.$color-border;
+    border-radius: 15px;
+    @include m.hover {
+      cursor: pointer;
+      border-color: v.$color-border-hover;
+      color: v.$color-text-hover;
+      box-shadow: v.$shadow-default;
+      transition-duration: 0.2s;
+      transform: translateY(-2px);
+    }
+  }
+}
