@@ -1,12 +1,15 @@
-@use "../../../variables" as v;
+@use "../../../../variables" as v;
 
-.dashboard {
+.profile {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
 
   &__conteiner {
+    padding: 60px 0px;
     height: 100%;
     display: flex;
+    flex-direction: column;
+    gap: 30px;
     align-items: center;
     justify-content: center;
   }

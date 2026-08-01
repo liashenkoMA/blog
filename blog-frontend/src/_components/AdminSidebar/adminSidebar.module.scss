@@ -1,8 +1,8 @@
 @use "../../variables" as v;
 @use "../../mixins" as m;
 
-.adminSidebar {
-  width: 300px;
+.sidebar {
+  min-width: 300px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

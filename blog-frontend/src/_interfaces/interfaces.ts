@@ -23,3 +23,47 @@ export interface ILoginFormData {
 export interface ILoginResponse {
   access_token: string;
 }
+
+export interface IProfileFormInput {
+  name: string;
+  email: string;
+  avatarLink: string;
+  telegram: string;
+  vk: string;
+  gitHub: string;
+  linkedin: string;
+  mySite: string;
+}
+
+export interface IProfileFormData {
+  name: string;
+  email: string;
+  avatarLink: string;
+  telegram: string;
+  vk: string;
+  gitHub: string;
+  linkedin: string;
+  mySite: string;
+}
+
+export interface IProfileResponse {
+  name: string;
+  email: string;
+  avatarLink: string;
+  telegram: string;
+  vk: string;
+  gitHub: string;
+  linkedin: string;
+  mySite: string;
+}
+
+export interface IUser {
+  name: string;
+  email: string;
+  avatarLink: string;
+  telegram: string;
+  vk: string;
+  gitHub: string;
+  linkedin: string;
+  mySite: string;
+}
