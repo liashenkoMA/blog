@@ -1,0 +1,52 @@
+@use "../../../variables" as v;
+@use "../../../mixins" as m;
+
+.button {
+  width: 100%;
+  height: 40px;
+  padding: 0px 5px;
+  border: none;
+  border-radius: 10px;
+  font-size: v.$font-size-x-small;
+  font-weight: v.$font-weight-medium;
+  line-height: v.$line-height-small;
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease,
+    filter 200ms ease;
+  @include m.respond-to(tablet-up) {
+    height: 60px;
+    border-radius: 15px;
+    font-size: v.$font-size-medium;
+    line-height: v.$line-height-large;
+  }
+
+  @include m.hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+    box-shadow: v.$shadow-default;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &__disabled {
+    opacity: 0.9;
+  }
+}
+
+.default {
+  background: v.$gradient-primary;
+  color: v.$color-text-main;
+}
+
+.success {
+  background-color: v.$color-button-success-bg;
+}
+
+.danger {
+  background-color: v.$color-button-error-bg;
+  color: v.$color-text-main;
+}

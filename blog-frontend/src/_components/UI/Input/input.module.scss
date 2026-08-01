@@ -1,0 +1,66 @@
+@use "../../../variables" as v;
+@use "../../../mixins" as m;
+
+.form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  @include m.respond-to(tablet-up) {
+    gap: 10px;
+  }
+}
+
+.input {
+  padding: 10px;
+  width: 100%;
+  height: 30px;
+  background-color: transparent;
+  border: 1px solid v.$color-border;
+  border-radius: 30px;
+  color: v.$color-text-main;
+  font-size: v.$font-size-x-small;
+  font-weight: v.$font-weight-regular;
+  line-height: v.$line-height-small;
+  @include m.respond-to(tablet-up) {
+    padding: 10px 15px;
+    height: 50px;
+    border-radius: 20px;
+    font-size: v.$font-size-medium;
+    line-height: v.$line-height-medium;
+  }
+
+  &__placeholder {
+    padding-left: 10px;
+    font-size: v.$font-size-xx-small;
+    font-weight: v.$font-weight-regular;
+    line-height: v.$line-height-small;
+    color: v.$white-blue;
+    @include m.respond-to(tablet-up) {
+      padding-left: 15px;
+      font-size: v.$font-size-small;
+      line-height: v.$line-height-small;
+    }
+  }
+
+  &__error {
+    padding-top: 7px;
+    font-size: v.$font-size-x-small;
+    font-weight: v.$font-weight-regular;
+    line-height: v.$line-height-small;
+    color: v.$color-text-error;
+    @include m.respond-to(tablet-up) {
+      font-size: v.$font-size-small;
+      line-height: v.$line-height-small;
+    }
+  }
+
+  &:focus {
+    outline: none;
+    border-color: v.$color-border-hover;
+  }
+
+  &::placeholder {
+    color: v.$color-text-secondary;
+    opacity: 0.4;
+  }
+}

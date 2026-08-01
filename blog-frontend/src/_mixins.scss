@@ -1,0 +1,33 @@
+@mixin hover {
+  &:hover {
+    @content;
+  }
+}
+
+@mixin respond-to($device) {
+  @if $device == desktop-large {
+    @media (min-width: 1440px) {
+      @content;
+    }
+  } @else if $device == desktop-up {
+    @media (min-width: 1024px) {
+      @content;
+    }
+  } @else if $device == desktop {
+    @media (min-width: 1024px) and (max-width: 1439px) {
+      @content;
+    }
+  } @else if $device == tablet-up {
+    @media (min-width: 768px) {
+      @content;
+    }
+  } @else if $device == tablet {
+    @media (min-width: 768px) and (max-width: 1023px) {
+      @content;
+    }
+  } @else if $device == mobile {
+    @media (max-width: 767px) {
+      @content;
+    }
+  }
+}

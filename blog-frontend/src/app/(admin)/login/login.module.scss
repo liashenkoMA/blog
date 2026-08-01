@@ -1,0 +1,42 @@
+@use "../../../variables" as v;
+@use "../../../mixins" as m;
+
+.main {
+  width: 100%;
+  height: 100vh;
+  background-color: v.$color-bg-page;
+}
+
+.login {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__conteiner {
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    @include m.respond-to(tablet-up) {
+      min-width: 460px;
+      gap: 30px;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    background: v.$text-gradient;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: v.$font-size-large-plus;
+    font-weight: v.$font-weight-medium;
+    line-height: v.$line-height-large-plus;
+    @include m.respond-to(tablet-up) {
+      font-size: v.$font-size-x-large;
+      line-height: v.$line-height-x-large;
+    }
+  }
+}

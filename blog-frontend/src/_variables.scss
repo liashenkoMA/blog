@@ -1,0 +1,104 @@
+/* Base colors */
+
+$white: #ffffff;
+$white-blue: #d6e4f5;
+$black: #000000;
+$grey: #64748b;
+$grey-light: #263452;
+$grey-blue: #9fb3d1;
+$grey-dark: #131c31;
+
+$blue-dark: #0f172a;
+$blue-dark-light: #111c36;
+
+$blue: #0ea5ea;
+$blue-light: #38bdf8;
+$blue-soft: #7dd3fc;
+
+$cyan: #2dd4bf; // changed
+$cyan-light: #5eead4; // changed
+$cyan-dark: #14b8a6; // changed
+
+$green: #4ade80;
+$red: #ef4444;
+
+/* Background colors */
+
+$color-bg-page: $blue-dark;
+$color-bg-element: $grey-dark;
+$color-bg-card: $blue-dark-light; // add
+
+/* Button colors */
+
+$color-button-success-bg: $green;
+$color-button-error-bg: $red;
+
+/* Shadows */
+
+$shadow-default: 0 8px 24px rgba(14, 165, 234, 0.15); // changed
+
+/* Border colors */
+
+$color-border: $grey-light;
+$color-border-hover: $blue; // add
+$color-border-active: $cyan; // add
+
+/* Text colors */
+
+$color-text-main: $white;
+$color-text-heading: $white-blue;
+$color-text-secondary: $grey-blue;
+$color-text-error: $red;
+$color-text-link: $blue-light; // add
+
+/* Accent colors */
+
+$color-accent-1: $cyan; // add
+$color-accent-2: $blue; // add
+
+/* Gradients */
+
+$text-gradient: linear-gradient(90deg, $blue, $cyan 50%, $blue);
+
+$gradient-primary: linear-gradient(90deg, $blue, $cyan); // add
+$gradient-card: linear-gradient(
+  135deg,
+  $grey-dark 0%,
+  $blue-dark-light 100%
+); // add
+
+/* Font size */
+
+$font-size-xx-small: 12px;
+$font-size-x-small: 14px;
+$font-size-small: 16px;
+$font-size-medium: 18px;
+$font-size-large: 24px;
+$font-size-large-plus: 32px; // add
+$font-size-x-large: 40px;
+$font-size-x-large-plus: 48px; // add
+$font-size-xx-large: 64px;
+$font-size-huge: 96px; // add
+
+/* Font weight */
+
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600; // add
+$font-weight-bold: 700;
+$font-weight-black: 800;
+$font-weight-super: 900;
+
+/* Line height */
+
+$line-height-xx-small: 16px;
+$line-height-x-small: 20px;
+$line-height-small: 24px;
+$line-height-medium: 28px;
+$line-height-large: 36px;
+$line-height-large-plus: 42px; // add
+$line-height-x-large: 52px;
+$line-height-x-large-plus: 60px; // add
+$line-height-xx-large: 76px;
+$line-height-huge: 108px; // add
