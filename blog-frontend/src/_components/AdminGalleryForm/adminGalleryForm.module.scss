@@ -1,0 +1,103 @@
+@use "../../variables" as v;
+@use "../../mixins" as m;
+
+.adminGalleryForm {
+  max-width: 350px;
+  padding: 15px;
+  display: grid;
+  gap: 20px;
+
+  &__form_field {
+    min-width: 300px;
+    height: 200px;
+    padding: 5px;
+    margin-bottom: 30px;
+    background-color: rgb(15, 23, 42, 0.6);
+    border: 2px dashed v.$color-border;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: v.$color-text-secondary;
+    @include m.hover {
+      cursor: pointer;
+      border-color: v.$color-border-hover;
+      color: v.$color-text-hover;
+    }
+
+    &_loading {
+      opacity: 0.5;
+    }
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__text {
+    font-size: v.$font-size-x-small;
+    font-weight: v.$font-weight-regular;
+    line-height: v.$line-height-small;
+  }
+
+  &__errors {
+    padding: 7px 0px 15px 0px;
+    color: v.$color-text-error;
+    font-weight: v.$font-weight-regular;
+    font-size: v.$font-size-small;
+    line-height: v.$line-height-small;
+  }
+
+  &__preview {
+    padding: 15px;
+    border: 1px solid v.$color-border;
+    border-radius: 30px;
+    background-color: v.$color-bg-element;
+    display: grid;
+    gap: 15px;
+
+    &_image {
+      border: 2px dashed v.$color-border-active;
+      border-radius: 30px;
+    }
+
+    &_info {
+      padding-left: 10px;
+      display: grid;
+      gap: 5px;
+    }
+
+    &_text {
+      font-weight: v.$font-weight-regular;
+      font-size: v.$font-size-small;
+      line-height: v.$line-height-small;
+      color: v.$color-text-main;
+    }
+
+    &_url {
+      color: v.$color-accent-1;
+      overflow-wrap: anywhere;
+    }
+  }
+
+  &__result {
+    padding: 15px;
+    min-width: 300px;
+    min-height: 120px;
+    border: 1px solid v.$color-border;
+    border-radius: 30px;
+    background-color: v.$color-bg-element;
+
+    &_text {
+      font-weight: v.$font-weight-regular;
+      font-size: v.$font-size-small;
+      line-height: v.$line-height-small;
+      color: v.$color-text-main;
+    }
+
+    &_url {
+      color: v.$color-accent-1;
+      overflow-wrap: anywhere;
+    }
+  }
+}

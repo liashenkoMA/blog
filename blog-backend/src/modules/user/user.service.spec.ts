@@ -12,6 +12,11 @@ import {
   UpdateUserDto,
 } from './user.schema.dto';
 
+jest.mock('bcrypt', () => ({
+  genSalt: jest.fn(),
+  hash: jest.fn(),
+}));
+
 describe('UserService', () => {
   let service: UserService;
   let mockJwtService;

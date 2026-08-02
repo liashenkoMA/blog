@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Admin Gallery Form component Snapshot 1`] = `
+<div>
+  <div
+    class="adminGalleryForm"
+  >
+    <form
+      class="form"
+      novalidate=""
+    >
+      <label
+        class="adminGalleryForm__form_field "
+        role="presentation"
+        tabindex="0"
+      >
+        <input
+          accept="image/jpeg,.jpg,.jpeg,image/png,.png,image/webp,.webp"
+          aria-label="Выберите изображение"
+          class="adminGalleryForm__input"
+          name="file"
+          style="border: 0px; display: block; height: 0px; margin: 0px; opacity: 0; overflow: hidden; padding: 0px; width: 0px;"
+          tabindex="-1"
+          type="file"
+        />
+        <span
+          class="adminGalleryForm__text"
+        >
+          Выберите файл или перетащите его сюда
+        </span>
+      </label>
+      <span
+        class="adminGalleryForm__errors"
+      />
+      <button
+        class="button  default"
+        type="submit"
+      >
+        Загрузить картинку
+      </button>
+    </form>
+    <div
+      class="adminGalleryForm__result"
+    >
+      <p
+        class="adminGalleryForm__result_text"
+      >
+        URL картинки:
+      </p>
+      <p
+        class="adminGalleryForm__result_url adminGalleryForm__result_text"
+      />
+    </div>
+  </div>
+</div>
+`;

@@ -67,3 +67,7 @@ export interface IUser {
   linkedin: string;
   mySite: string;
 }
+
+export interface IFileResponse {
+  filePath: string;
+}

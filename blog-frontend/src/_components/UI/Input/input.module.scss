@@ -34,7 +34,7 @@
     font-size: v.$font-size-xx-small;
     font-weight: v.$font-weight-regular;
     line-height: v.$line-height-small;
-    color: v.$white-blue;
+    color: v.$color-text-heading;
     @include m.respond-to(tablet-up) {
       padding-left: 15px;
       font-size: v.$font-size-small;

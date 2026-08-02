@@ -22,8 +22,8 @@ export default function AdminSidebar() {
           </Link>
         </li>
         <li className={styles.sidebar__list}>
-          <Link href={"/"} className={styles.sidebar__link}>
-            Галерея
+          <Link href={ROUTES.gallery} className={styles.sidebar__link}>
+            Gallery
           </Link>
         </li>
         <li className={styles.sidebar__list}>
