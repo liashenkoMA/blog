@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { FileController } from './file.controller';
 import { FileService } from './file.service';
+import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
 
 describe('FileController', () => {
   let controller: FileController;
@@ -23,7 +24,12 @@ describe('FileController', () => {
           useValue: mockFileService,
         },
       ],
-    }).compile();
+    })
+      .overrideGuard(JwtAuthGuard)
+      .useValue({
+        canActivate: jest.fn().mockReturnValue(true),
+      })
+      .compile();
 
     controller = module.get<FileController>(FileController);
   });

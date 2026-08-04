@@ -2,6 +2,8 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { NotFoundException } from '@nestjs/common';
 import { CategoriesService } from './categories.service';
 import { CategoryDto } from './categories.schema.dto';
+import { getModelToken } from '@nestjs/mongoose';
+import { Category } from './categories.schema';
 
 describe('CategoriesService', () => {
   let service: CategoriesService;
@@ -19,7 +21,7 @@ describe('CategoriesService', () => {
       providers: [
         CategoriesService,
         {
-          provide: 'CategoryModel',
+          provide: getModelToken(Category.name),
           useValue: mockCategoryModel,
         },
       ],

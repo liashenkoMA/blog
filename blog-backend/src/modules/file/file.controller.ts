@@ -6,17 +6,20 @@ import {
   Param,
   Post,
   UploadedFile,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { FileService } from './file.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import path from 'path';
+import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
 
 @Controller(ROUTES.FILE)
 export class FileController {
   constructor(private readonly fileService: FileService) {}
 
+  @UseGuards(JwtAuthGuard)
   @Post(ROUTES.FILE_ADD)
   @UseInterceptors(
     FileInterceptor('file', {
@@ -53,16 +56,19 @@ export class FileController {
     return this.fileService.addFile(file);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get()
   getFiles() {
     return this.fileService.getFiles();
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get(ROUTES.FILE_GET)
   getFile(@Param('filename') file: string) {
     return this.fileService.getFile(file);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Delete(ROUTES.FILE_DELETE)
   deleteFile(@Param('filename') file: string) {
     return this.fileService.deleteFile(file);
