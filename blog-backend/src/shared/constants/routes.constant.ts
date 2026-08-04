@@ -12,6 +12,11 @@ const FILE_ADD = 'add';
 const FILE_GET = '"filename';
 const FILE_DELETE = ':filename';
 
+// === CATEGORY ===
+
+const CATEGORY = 'categories';
+const CATEGORY_GET = ':slug';
+
 export const ROUTES = {
   AUTH,
   SIGN_IN,
@@ -21,4 +26,6 @@ export const ROUTES = {
   FILE_ADD,
   FILE_GET,
   FILE_DELETE,
+  CATEGORY,
+  CATEGORY_GET,
 } as const;
