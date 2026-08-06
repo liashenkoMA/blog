@@ -5,6 +5,7 @@ import { Category, CategorySchema } from '../categories/categories.schema';
 import { Tag, TagSchema } from '../tags/tags.schema';
 import { ArticleController } from './article.controller';
 import { ArticleService } from './article.service';
+import { UserModule } from '../user/user.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { ArticleService } from './article.service';
         schema: TagSchema,
       },
     ]),
+    UserModule,
   ],
   controllers: [ArticleController],
   providers: [ArticleService],
