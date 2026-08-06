@@ -55,6 +55,9 @@ export class Article {
 
   @Prop()
   publishedAt?: Date;
+
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export type ArticleDocument = HydratedDocument<Article>;

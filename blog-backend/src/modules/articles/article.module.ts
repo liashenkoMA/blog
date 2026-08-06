@@ -3,6 +3,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { Article, ArticleSchema } from './article.schema';
 import { Category, CategorySchema } from '../categories/categories.schema';
 import { Tag, TagSchema } from '../tags/tags.schema';
+import { ArticleController } from './article.controller';
+import { ArticleService } from './article.service';
 
 @Module({
   imports: [
@@ -21,7 +23,7 @@ import { Tag, TagSchema } from '../tags/tags.schema';
       },
     ]),
   ],
-  controllers: [],
-  providers: [],
+  controllers: [ArticleController],
+  providers: [ArticleService],
 })
 export class ArticlesModule {}
