@@ -71,3 +71,29 @@ export interface IUser {
 export interface IFileResponse {
   filePath: string;
 }
+
+export interface ICategoryFormInput {
+  slug: string;
+  name: string;
+  image: string;
+  imageAlt: string;
+  title: string;
+  description: string;
+}
+
+export interface ICategory {
+  slug: string;
+  name: string;
+  image: string;
+  imageAlt: string;
+  title: string;
+  description: string;
+}
+
+export interface ICategoryResponse extends ICategory {
+  _id: string;
+}
+
+export interface ICategoryCreateResponse {
+  createCategory: ICategoryResponse;
+}

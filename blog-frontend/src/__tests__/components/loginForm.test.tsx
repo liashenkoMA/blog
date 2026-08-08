@@ -109,7 +109,6 @@ describe("Login Form component", () => {
     await waitFor(() => {
       expect(login).toHaveBeenCalled();
     });
-
     expect(pushMock).toHaveBeenCalledWith("/dashboard");
   });
 

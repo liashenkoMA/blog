@@ -1,0 +1,144 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Admin Category Form component Snapshot 1`] = `
+<div>
+  <div
+    class="adminCategoryForm"
+  >
+    <form
+      class="form"
+      novalidate=""
+    >
+      <label
+        class="form__field"
+      >
+        <span
+          class="input__placeholder"
+        >
+          slug
+        </span>
+        <input
+          class="input"
+          name="slug"
+          placeholder="Введите slug"
+          required=""
+          type="text"
+          value=""
+        />
+        <span
+          class="input__error"
+        />
+      </label>
+      <label
+        class="form__field"
+      >
+        <span
+          class="input__placeholder"
+        >
+          name
+        </span>
+        <input
+          class="input"
+          name="name"
+          placeholder="Введите название категории"
+          required=""
+          type="text"
+          value=""
+        />
+        <span
+          class="input__error"
+        />
+      </label>
+      <label
+        class="form__field"
+      >
+        <span
+          class="input__placeholder"
+        >
+          image
+        </span>
+        <input
+          class="input"
+          name="image"
+          placeholder="Введите URL изображения"
+          required=""
+          type="text"
+          value=""
+        />
+        <span
+          class="input__error"
+        />
+      </label>
+      <label
+        class="form__field"
+      >
+        <span
+          class="input__placeholder"
+        >
+          imageAlt
+        </span>
+        <input
+          class="input"
+          name="imageAlt"
+          placeholder="Введите описание изображения"
+          required=""
+          type="text"
+          value=""
+        />
+        <span
+          class="input__error"
+        />
+      </label>
+      <label
+        class="form__field"
+      >
+        <span
+          class="input__placeholder"
+        >
+          title
+        </span>
+        <input
+          class="input"
+          name="title"
+          placeholder="Введите title"
+          required=""
+          type="text"
+          value=""
+        />
+        <span
+          class="input__error"
+        />
+      </label>
+      <label
+        class="form__field"
+      >
+        <span
+          class="input__placeholder"
+        >
+          description
+        </span>
+        <input
+          class="input"
+          name="description"
+          placeholder="Введите description"
+          required=""
+          type="text"
+          value=""
+        />
+        <span
+          class="input__error"
+        />
+      </label>
+      <button
+        class="button  default"
+        type="submit"
+      >
+        Создать категорию
+      </button>
+      <span
+        class="adminCategoryForm__errors"
+      />
+    </form>
+  </div>
+</div>
+`;

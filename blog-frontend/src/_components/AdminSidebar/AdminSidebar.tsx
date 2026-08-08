@@ -1,5 +1,5 @@
-import Link from "next/link";
 import styles from "./adminSidebar.module.scss";
+import Link from "next/link";
 import { ROUTES } from "@/_constants/routes.constant";
 
 export default function AdminSidebar() {
@@ -27,8 +27,18 @@ export default function AdminSidebar() {
           </Link>
         </li>
         <li className={styles.sidebar__list}>
-          <Link href={"/"} className={styles.sidebar__link}>
-            Загрузить статью
+          <Link href={ROUTES.category} className={styles.sidebar__link}>
+            Category
+          </Link>
+        </li>
+        <li className={styles.sidebar__list}>
+          <Link href={ROUTES.tag} className={styles.sidebar__link}>
+            Tag
+          </Link>
+        </li>
+        <li className={styles.sidebar__list}>
+          <Link href={ROUTES.article} className={styles.sidebar__link}>
+            Article
           </Link>
         </li>
       </ol>

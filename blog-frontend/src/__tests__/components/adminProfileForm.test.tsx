@@ -46,23 +46,18 @@ describe("Admin Profile Form component", () => {
     expect(
       screen.getByPlaceholderText("https://example.com/avatar.jpg"),
     ).toHaveValue("https://example.com/avatar.jpg");
-
     expect(screen.getByPlaceholderText("https://t.me/username")).toHaveValue(
       "https://t.me/max",
     );
-
     expect(screen.getByPlaceholderText("https://vk.com/username")).toHaveValue(
       "https://vk.com/max",
     );
-
     expect(
       screen.getByPlaceholderText("https://github.com/username"),
     ).toHaveValue("https://github.com/max");
-
     expect(
       screen.getByPlaceholderText("https://linkedin.com/in/username"),
     ).toHaveValue("https://linkedin.com/in/max");
-
     expect(screen.getByPlaceholderText("https://example.com")).toHaveValue(
       "https://example.com",
     );
@@ -96,7 +91,6 @@ describe("Admin Profile Form component", () => {
         screen.getByText("Имя должно быть не короче 2 символов"),
       ).toBeInTheDocument();
     });
-
     expect(updateUser).not.toHaveBeenCalled();
   });
 
@@ -114,7 +108,6 @@ describe("Admin Profile Form component", () => {
     await waitFor(() => {
       expect(screen.getByText("Введите корректный email")).toBeInTheDocument();
     });
-
     expect(updateUser).not.toHaveBeenCalled();
   });
 
@@ -132,7 +125,6 @@ describe("Admin Profile Form component", () => {
     await waitFor(() => {
       expect(screen.getByText("Введите корректную ссылку")).toBeInTheDocument();
     });
-
     expect(updateUser).not.toHaveBeenCalled();
   });
 
@@ -181,9 +173,7 @@ describe("Admin Profile Form component", () => {
         mySite: "https://example.com",
       });
     });
-
     expect(screen.getByPlaceholderText("Иван")).toHaveValue("Новое имя");
-
     expect(screen.getByPlaceholderText("ivan@mail.ru")).toHaveValue(
       "new@mail.ru",
     );
