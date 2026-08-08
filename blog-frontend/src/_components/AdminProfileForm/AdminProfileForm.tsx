@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./adminProfileForm.module.scss";
-import { PROFILE_FORM_INPUTS } from "@/_constants/profile.constant";
+import { PROFILE_FORM_INPUTS } from "@/_constants/profileForm.constant";
 import Form from "../UI/Form/Form";
 import Input from "../UI/Input/Input";
 import Button from "../UI/Button/Button";

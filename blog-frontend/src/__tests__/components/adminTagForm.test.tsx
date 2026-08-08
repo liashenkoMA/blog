@@ -1,21 +1,21 @@
-import AdminCategoryForm from "@/_components/AdminCategoryForm/AdminCategoryForm";
-import { CATEGORY_FORM_INPUTS } from "@/_constants/categoryForm.constant";
-import { createCategory } from "../../_utils/client/categoryApi";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import AdminTagForm from "../../_components/AdminTagForm/AdminTagForm";
+import { TAG_FORM_INPUTS } from "../../_constants/tagForm.constant";
+import { createTag } from "../../_utils/client/tagApi";
 
-jest.mock("../../_utils/client/categoryApi", () => ({
-  createCategory: jest.fn(),
+jest.mock("../../_utils/client/tagApi", () => ({
+  createTag: jest.fn(),
 }));
 
-describe("Admin Category Form component", () => {
+describe("Admin Tag Form component", () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
   it("Рендер всех полей", () => {
-    render(<AdminCategoryForm />);
+    render(<AdminTagForm />);
 
-    CATEGORY_FORM_INPUTS.forEach((input) => {
+    TAG_FORM_INPUTS.forEach((input) => {
       const field = screen.getByPlaceholderText(input.placeholder as string);
 
       expect(field).toBeInTheDocument();
@@ -23,7 +23,7 @@ describe("Admin Category Form component", () => {
   });
 
   it("Ввод данных работает", () => {
-    render(<AdminCategoryForm />);
+    render(<AdminTagForm />);
 
     const input = screen.getByPlaceholderText("Введите slug");
 
@@ -35,10 +35,10 @@ describe("Admin Category Form component", () => {
   });
 
   it("Кнопка submit заблокирована при пустых данных", async () => {
-    render(<AdminCategoryForm />);
+    render(<AdminTagForm />);
 
     const button = screen.getByRole("button", {
-      name: /Создать категорию/i,
+      name: /Создать тег/i,
     });
 
     fireEvent.click(button);
@@ -49,10 +49,10 @@ describe("Admin Category Form component", () => {
   });
 
   it("Ошибки валидации отображаются", () => {
-    render(<AdminCategoryForm />);
+    render(<AdminTagForm />);
 
     const button = screen.getByRole("button", {
-      name: /Создать категорию/i,
+      name: /Создать тег/i,
     });
 
     fireEvent.click(button);
@@ -83,10 +83,10 @@ describe("Admin Category Form component", () => {
   });
 
   it("Ошибка валидации исчезает после изменения поля", async () => {
-    render(<AdminCategoryForm />);
+    render(<AdminTagForm />);
 
     const button = screen.getByRole("button", {
-      name: /Создать категорию/i,
+      name: /Создать тег/i,
     });
 
     fireEvent.click(button);
@@ -108,31 +108,28 @@ describe("Admin Category Form component", () => {
     });
   });
 
-  it("Успешное создание категории", async () => {
-    render(<AdminCategoryForm />);
+  it("Успешное создание тега", async () => {
+    render(<AdminTagForm />);
 
-    (createCategory as jest.Mock).mockResolvedValueOnce({
-      createCategory: {
+    (createTag as jest.Mock).mockResolvedValueOnce({
+      createTag: {
         _id: "123456",
-        slug: "test-category",
-        name: "Тестовая категория",
+        slug: "test-tag",
+        name: "Тестовый тег",
         image: "https://example.com/image.jpg",
-        imageAlt: "Тестовая категория",
-        title: "Тестовая категория",
-        description: "Описание тестовой категории",
+        imageAlt: "Тестовый тег",
+        title: "Тестовый тег",
+        description: "Описание тестового тега",
       },
     });
 
     fireEvent.change(screen.getByPlaceholderText("Введите slug"), {
-      target: { value: "test-category" },
+      target: { value: "test-tag" },
     });
 
-    fireEvent.change(
-      screen.getByPlaceholderText("Введите название категории"),
-      {
-        target: { value: "Тестовая категория" },
-      },
-    );
+    fireEvent.change(screen.getByPlaceholderText("Введите название тега"), {
+      target: { value: "Тестовый тег" },
+    });
 
     fireEvent.change(screen.getByPlaceholderText("Введите URL изображения"), {
       target: { value: "https://example.com/image.jpg" },
@@ -141,56 +138,52 @@ describe("Admin Category Form component", () => {
     fireEvent.change(
       screen.getByPlaceholderText("Введите описание изображения"),
       {
-        target: { value: "Тестовая категория" },
+        target: { value: "Тестовый тег" },
       },
     );
 
     fireEvent.change(screen.getByPlaceholderText("Введите title"), {
-      target: { value: "Тестовая категория" },
+      target: { value: "Тестовый тег" },
     });
 
     fireEvent.change(screen.getByPlaceholderText("Введите description"), {
-      target: { value: "Описание тестовой категории" },
+      target: { value: "Описание тестового тега" },
     });
 
     const button = screen.getByRole("button", {
-      name: /Создать категорию/i,
+      name: /Создать тег/i,
     });
 
     fireEvent.click(button);
 
     await waitFor(() => {
-      expect(createCategory).toHaveBeenCalledTimes(1);
+      expect(createTag).toHaveBeenCalledTimes(1);
     });
-    expect(createCategory).toHaveBeenCalledWith({
-      slug: "test-category",
-      name: "Тестовая категория",
+
+    expect(createTag).toHaveBeenCalledWith({
+      slug: "test-tag",
+      name: "Тестовый тег",
       image: "https://example.com/image.jpg",
-      imageAlt: "Тестовая категория",
-      title: "Тестовая категория",
-      description: "Описание тестовой категории",
+      imageAlt: "Тестовый тег",
+      title: "Тестовый тег",
+      description: "Описание тестового тега",
     });
   });
 
   it("Ошибка сервера отображается", async () => {
-    render(<AdminCategoryForm />);
+    render(<AdminTagForm />);
 
     const errorMessage = "Ошибка сервера";
 
-    (createCategory as jest.Mock).mockRejectedValueOnce(
-      new Error(errorMessage),
-    );
+    (createTag as jest.Mock).mockRejectedValueOnce(new Error(errorMessage));
 
     fireEvent.change(screen.getByPlaceholderText("Введите slug"), {
-      target: { value: "test-category" },
+      target: { value: "test-tag" },
     });
 
-    fireEvent.change(
-      screen.getByPlaceholderText("Введите название категории"),
-      {
-        target: { value: "Тестовая категория" },
-      },
-    );
+    fireEvent.change(screen.getByPlaceholderText("Введите название тега"), {
+      target: { value: "Тестовый тег" },
+    });
 
     fireEvent.change(screen.getByPlaceholderText("Введите URL изображения"), {
       target: { value: "https://example.com/image.jpg" },
@@ -199,21 +192,21 @@ describe("Admin Category Form component", () => {
     fireEvent.change(
       screen.getByPlaceholderText("Введите описание изображения"),
       {
-        target: { value: "Тестовая категория" },
+        target: { value: "Тестовый тег" },
       },
     );
 
     fireEvent.change(screen.getByPlaceholderText("Введите title"), {
-      target: { value: "Тестовая категория" },
+      target: { value: "Тестовый тег" },
     });
 
     fireEvent.change(screen.getByPlaceholderText("Введите description"), {
-      target: { value: "Описание тестовой категории" },
+      target: { value: "Описание тестового тега" },
     });
 
     fireEvent.click(
       screen.getByRole("button", {
-        name: /Создать категорию/i,
+        name: /Создать тег/i,
       }),
     );
 
@@ -223,7 +216,7 @@ describe("Admin Category Form component", () => {
   });
 
   it("Snapshot", () => {
-    const { container } = render(<AdminCategoryForm />);
+    const { container } = render(<AdminTagForm />);
 
     expect(container).toMatchSnapshot();
   });

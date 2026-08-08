@@ -1,5 +1,5 @@
 import AdminProfileForm from "../../_components/AdminProfileForm/AdminProfileForm";
-import { PROFILE_FORM_INPUTS } from "../../_constants/profile.constant";
+import { PROFILE_FORM_INPUTS } from "../../_constants/profileForm.constant";
 import { IProfileResponse, IUser } from "../../_interfaces/interfaces";
 import { updateUser } from "../../_utils/client/userApi";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";

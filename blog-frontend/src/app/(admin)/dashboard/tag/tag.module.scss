@@ -1,0 +1,50 @@
+@use "../../../../variables" as v;
+
+.tag {
+  width: 100%;
+  min-height: 100vh;
+
+  &__conteiner {
+    padding: 60px 0px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__title {
+    text-align: center;
+    background: v.$text-gradient;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: v.$font-weight-medium;
+    font-size: v.$font-size-x-large;
+    line-height: v.$line-height-x-large;
+  }
+
+  &__lists {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+  &__list {
+    width: 300px;
+    padding: 15px;
+    border: 1px solid v.$color-border;
+    border-radius: 30px;
+    background-color: v.$color-bg-element;
+    display: grid;
+    gap: 5px;
+  }
+
+  &__text {
+    color: v.$color-text-main;
+    font-size: v.$font-size-x-small;
+    font-weight: v.$font-weight-regular;
+    line-height: v.$line-height-small;
+  }
+}

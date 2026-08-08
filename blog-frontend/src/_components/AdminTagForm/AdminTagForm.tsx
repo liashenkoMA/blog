@@ -1,13 +1,13 @@
 "use client";
 
-import styles from "./adminCategoryForm.module.scss";
+import styles from "./adminTagForm.module.scss";
 import Form from "../UI/Form/Form";
-import { CATEGORY_FORM_INPUTS } from "@/_constants/categoryForm.constant";
 import Input from "../UI/Input/Input";
 import { z } from "zod";
 import { useState } from "react";
 import Button from "../UI/Button/Button";
-import { createCategory } from "@/_utils/client/categoryApi";
+import { createTag } from "@/_utils/client/tagApi";
+import { TAG_FORM_INPUTS } from "@/_constants/tagForm.constant";
 
 const formSchema = z.object({
   slug: z.string().min(2, { message: "Slug должен быть не короче 2 символов" }),
@@ -26,9 +26,9 @@ const formSchema = z.object({
     .min(2, { message: "Description должна быть не короче 2 символов" }),
 });
 
-type CategoryFormType = z.infer<typeof formSchema>;
+type TagFormType = z.infer<typeof formSchema>;
 
-const initialFormState: CategoryFormType = {
+const initialFormState: TagFormType = {
   slug: "",
   name: "",
   image: "",
@@ -37,8 +37,8 @@ const initialFormState: CategoryFormType = {
   description: "",
 };
 
-export default function AdminCategoryForm() {
-  const [formData, setFormData] = useState<CategoryFormType>(initialFormState);
+export default function AdminTagForm() {
+  const [formData, setFormData] = useState<TagFormType>(initialFormState);
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] =
     useState<z.ZodFlattenedError<z.infer<typeof formSchema>>>();
@@ -65,7 +65,7 @@ export default function AdminCategoryForm() {
 
     setIsLoading(true);
 
-    createCategory(formData)
+    createTag(formData)
       .then(() => {
         setServerErrorMessage("");
       })
@@ -74,9 +74,9 @@ export default function AdminCategoryForm() {
   }
 
   return (
-    <div className={styles.adminCategoryForm}>
+    <div className={styles.adminTagForm}>
       <Form handleSubmit={handleSubmit}>
-        {CATEGORY_FORM_INPUTS.map((input) => (
+        {TAG_FORM_INPUTS.map((input) => (
           <Input
             key={input.name}
             {...input}
@@ -87,9 +87,9 @@ export default function AdminCategoryForm() {
           />
         ))}
         <Button type="submit" disabled={isLoading || Boolean(errors)}>
-          Создать категорию
+          Создать тег
         </Button>
-        <span className={styles.adminCategoryForm__errors}>
+        <span className={styles.adminTagForm__errors}>
           {serverErrorMessage}
         </span>
       </Form>

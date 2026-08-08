@@ -97,3 +97,29 @@ export interface ICategoryResponse extends ICategory {
 export interface ICategoryCreateResponse {
   createCategory: ICategoryResponse;
 }
+
+export interface ITagFormInput {
+  slug: string;
+  name: string;
+  image: string;
+  imageAlt: string;
+  title: string;
+  description: string;
+}
+
+export interface ITag {
+  slug: string;
+  name: string;
+  image: string;
+  imageAlt: string;
+  title: string;
+  description: string;
+}
+
+export interface ITagResponse extends ITag {
+  _id: string;
+}
+
+export interface ITagCreateResponse {
+  createTag: ITagResponse;
+}
