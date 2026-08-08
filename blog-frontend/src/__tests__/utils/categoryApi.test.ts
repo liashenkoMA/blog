@@ -1,7 +1,18 @@
-import { ICategory, ICategoryCreateResponse } from "@/_interfaces/interfaces";
+import {
+  ICategory,
+  ICategoryCreateResponse,
+  ICategoryResponse,
+} from "@/_interfaces/interfaces";
 import { createCategory } from "../../_utils/client/categoryApi";
+import { getCategories } from "@/_utils/server/categoryApi";
 
 global.fetch = jest.fn();
+
+jest.mock("next/headers", () => ({
+  cookies: jest.fn(() => ({
+    toString: () => "mock-cookie",
+  })),
+}));
 
 describe("Category API", () => {
   const mockFetch = fetch as jest.MockedFunction<typeof fetch>;
@@ -26,7 +37,6 @@ describe("Category API", () => {
       await expect(createCategory(mockFormData)).rejects.toThrow(
         "Network Error",
       );
-
       expect(mockFetch).toHaveBeenCalledTimes(1);
     });
 
@@ -84,7 +94,70 @@ describe("Category API", () => {
       await expect(createCategory(mockFormData)).rejects.toThrow(
         "Internal Server Error",
       );
+      expect(mockFetch).toHaveBeenCalledTimes(1);
+    });
+  });
 
+  describe("getCategories", () => {
+    it("Ошибка сети при получении категорий", async () => {
+      mockFetch.mockRejectedValueOnce(new Error("Network Error"));
+
+      await expect(getCategories()).rejects.toThrow("Network Error");
+      expect(mockFetch).toHaveBeenCalledTimes(1);
+    });
+
+    it("Успешное получение категорий", async () => {
+      const mockResponse: ICategoryResponse[] = [
+        {
+          _id: "id1",
+          slug: "frontend",
+          name: "Frontend",
+          image: "https://example.com/frontend.jpg",
+          imageAlt: "Frontend",
+          title: "Frontend разработка",
+          description: "Статьи о frontend разработке",
+        },
+        {
+          _id: "id2",
+          slug: "backend",
+          name: "Backend",
+          image: "https://example.com/backend.jpg",
+          imageAlt: "Backend",
+          title: "Backend разработка",
+          description: "Статьи о backend разработке",
+        },
+      ];
+
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        json: async () => mockResponse,
+      } as Response);
+
+      const data: ICategoryResponse[] = await getCategories();
+
+      await expect(data).toEqual(mockResponse);
+      expect(mockFetch).toHaveBeenCalledTimes(1);
+      expect(mockFetch).toHaveBeenCalledWith(
+        expect.stringContaining("/categories"),
+        expect.objectContaining({
+          method: "GET",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+            Cookie: "mock-cookie",
+          },
+        }),
+      );
+    });
+
+    it("Сервер вернул !res.ok", async () => {
+      mockFetch.mockResolvedValueOnce({
+        ok: false,
+        status: 500,
+        json: async () => ({ message: "Internal Server Error" }),
+      } as Response);
+
+      await expect(getCategories()).rejects.toThrow("Internal Server Error");
       expect(mockFetch).toHaveBeenCalledTimes(1);
     });
   });

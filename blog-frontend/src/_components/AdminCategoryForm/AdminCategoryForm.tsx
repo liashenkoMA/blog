@@ -66,8 +66,7 @@ export default function AdminCategoryForm() {
     setIsLoading(true);
 
     createCategory(formData)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         setServerErrorMessage("");
       })
       .catch((err) => setServerErrorMessage(err.message))
