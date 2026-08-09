@@ -1,16 +1,17 @@
+import { getCategories } from "@/_utils/server/categoryApi";
 import styles from "./article.module.scss";
+import AdminArticleForm from "@/_components/AdminArticleForm/AdminArticleForm";
+import { getTags } from "@/_utils/server/tagApi";
 
 export default async function Page() {
+  const [categories, tags] = await Promise.all([getCategories(), getTags()]);
+
   return (
     <section className={styles.article}>
       <div className={styles.article__conteiner}>
         <h1 className={styles.article__title}>Статья</h1>
+        <AdminArticleForm categories={categories} tags={tags} />
       </div>
     </section>
   );
 }
-
-// форма добавления категорий и апи, тесты
-// форма добавления тэгов и апи, тесты
-// Скорее всего вынести тэги и категории на отдельную страницу, чтобы при переходе на страницу статей по АПИ получать тэги и категории для формы. Так думаю даже удобно будет. А на страницах тэгов и категорий в будущем добавлю возможность их редактирования
-// форма добавления статьи и апи и тесты

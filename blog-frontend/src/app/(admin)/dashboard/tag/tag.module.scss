@@ -39,6 +39,7 @@
     background-color: v.$color-bg-element;
     display: grid;
     gap: 5px;
+    box-sizing: border-box;
   }
 
   &__text {
@@ -46,5 +47,6 @@
     font-size: v.$font-size-x-small;
     font-weight: v.$font-weight-regular;
     line-height: v.$line-height-small;
+    word-break: break-all;
   }
 }

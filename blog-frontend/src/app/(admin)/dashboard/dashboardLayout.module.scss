@@ -1,5 +1,6 @@
 .wrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: 300px 1fr;
 }
 
 .content {

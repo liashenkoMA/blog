@@ -123,3 +123,33 @@ export interface ITagResponse extends ITag {
 export interface ITagCreateResponse {
   createTag: ITagResponse;
 }
+
+export interface IArticleFormInput {
+  slug: string;
+  title: string;
+  h1: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+}
+
+export interface IArticle {
+  slug: string;
+  title: string;
+  h1: string;
+  description: string;
+  category: string;
+  tags?: string[];
+  image: string;
+  imageAlt: string;
+  content: string;
+  status?: "draft" | "published" | "archived";
+}
+
+export interface IArticleResponse extends IArticle {
+  _id: string;
+}
+
+export interface IArticleCreateResponse {
+  message: string;
+}

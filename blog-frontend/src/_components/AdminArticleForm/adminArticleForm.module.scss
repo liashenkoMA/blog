@@ -1,0 +1,94 @@
+@use "../../variables" as v;
+@use "../../mixins" as m;
+
+.adminArticleForm {
+  width: 700px;
+
+  &__metadata {
+    display: grid;
+  }
+
+  &__field {
+    display: grid;
+    gap: 5px;
+    @include m.respond-to(tablet-up) {
+      gap: 10px;
+    }
+  }
+
+  &__lists {
+    padding: 10px;
+    width: 100%;
+    min-height: 30px;
+    background-color: transparent;
+    border: 1px solid v.$color-border;
+    border-radius: 30px;
+    color: v.$color-text-secondary;
+    font-size: v.$font-size-x-small;
+    font-weight: v.$font-weight-regular;
+    line-height: v.$line-height-small;
+    @include m.respond-to(tablet-up) {
+      padding: 10px 15px;
+      min-height: 50px;
+      border-radius: 20px;
+      font-size: v.$font-size-medium;
+      line-height: v.$line-height-medium;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: v.$color-border-hover;
+    }
+  }
+
+  &__placeholder {
+    padding-left: 10px;
+    font-size: v.$font-size-xx-small;
+    font-weight: v.$font-weight-regular;
+    line-height: v.$line-height-small;
+    color: v.$color-text-heading;
+    @include m.respond-to(tablet-up) {
+      padding-left: 15px;
+      font-size: v.$font-size-small;
+      line-height: v.$line-height-small;
+    }
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  &__tag {
+  }
+
+  &__checkbox {
+  }
+
+  &__text {
+    color: v.$color-text-main;
+    font-size: v.$font-size-x-small;
+    font-weight: v.$font-weight-regular;
+    line-height: v.$line-height-small;
+    @include m.respond-to(tablet-up) {
+      padding: 10px 15px;
+      height: 50px;
+      border-radius: 20px;
+      font-size: v.$font-size-medium;
+      line-height: v.$line-height-medium;
+    }
+  }
+
+  &__errors {
+    padding: 7px 0px 15px 0px;
+    font-size: v.$font-size-x-small;
+    font-weight: v.$font-weight-regular;
+    line-height: v.$line-height-small;
+    color: v.$color-text-error;
+    @include m.respond-to(tablet-up) {
+      font-size: v.$font-size-small;
+      line-height: v.$line-height-small;
+    }
+  }
+}
