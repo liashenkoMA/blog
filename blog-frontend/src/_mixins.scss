@@ -5,7 +5,11 @@
 }
 
 @mixin respond-to($device) {
-  @if $device == desktop-large {
+  @if $device == desktop-xl {
+    @media (min-width: 1920px) {
+      @content;
+    }
+  } @else if $device == desktop-large {
     @media (min-width: 1440px) {
       @content;
     }
