@@ -35,3 +35,195 @@
     }
   }
 }
+
+@mixin text-writer-home {
+  @keyframes typing {
+    // Creator
+    0%,
+    26% {
+      content: "";
+    }
+
+    1%,
+    25% {
+      content: "C";
+    }
+
+    2%,
+    24% {
+      content: "Cr";
+    }
+
+    3%,
+    23% {
+      content: "Cre";
+    }
+
+    4%,
+    22% {
+      content: "Crea";
+    }
+
+    5%,
+    21% {
+      content: "Creat";
+    }
+
+    6%,
+    20% {
+      content: "Creato";
+    }
+
+    7%,
+    19% {
+      content: "Creator";
+    }
+
+    // Gamer
+    28%,
+    50% {
+      content: "";
+    }
+
+    29%,
+    49% {
+      content: "G";
+    }
+
+    30%,
+    48% {
+      content: "Ga";
+    }
+
+    31%,
+    47% {
+      content: "Gam";
+    }
+
+    32%,
+    46% {
+      content: "Game";
+    }
+
+    33%,
+    45% {
+      content: "Gamer";
+    }
+
+    // Maksim Lyashenko
+    52%,
+    96% {
+      content: "";
+    }
+
+    53%,
+    95% {
+      content: "M";
+    }
+
+    54%,
+    94% {
+      content: "Ma";
+    }
+
+    55%,
+    93% {
+      content: "Mak";
+    }
+
+    56%,
+    92% {
+      content: "Maks";
+    }
+
+    57%,
+    91% {
+      content: "Maksi";
+    }
+
+    58%,
+    90% {
+      content: "Maksim";
+    }
+
+    59%,
+    89% {
+      content: "Maksim ";
+    }
+
+    60%,
+    88% {
+      content: "Maksim L";
+    }
+
+    61%,
+    87% {
+      content: "Maksim Ly";
+    }
+
+    62%,
+    86% {
+      content: "Maksim Lya";
+    }
+
+    63%,
+    85% {
+      content: "Maksim Lyas";
+    }
+
+    64%,
+    84% {
+      content: "Maksim Lyash";
+    }
+
+    65%,
+    83% {
+      content: "Maksim Lyashe";
+    }
+
+    66%,
+    82% {
+      content: "Maksim Lyashen";
+    }
+
+    67%,
+    81% {
+      content: "Maksim Lyashenk";
+    }
+
+    68%,
+    80% {
+      content: "Maksim Lyashenko";
+    }
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes movingY {
+  from {
+    translate: 0 -64px;
+  }
+
+  to {
+    translate: 0 20px;
+  }
+}
+
+@keyframes movingX {
+  from {
+    translate: -60px 0;
+  }
+
+  to {
+    translate: 40px 0;
+  }
+}

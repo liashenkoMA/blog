@@ -1,0 +1,127 @@
+@use "../../variables" as v;
+@use "../../mixins" as m;
+
+.mainPageHero {
+  padding-top: 64px;
+  background-color: v.$color-bg-element;
+  @include m.respond-to(desktop-up) {
+    padding-top: 128px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 30px;
+    margin: 0 auto;
+    max-width: 300px;
+    @include m.respond-to(tablet-up) {
+      max-width: 720px;
+      flex-direction: row;
+    }
+    @include m.respond-to(desktop-up) {
+      max-width: 960px;
+      justify-content: space-between;
+    }
+    @include m.respond-to(desktop-large) {
+      max-width: 1280px;
+    }
+    @include m.respond-to(desktop-xl) {
+      max-width: 1440px;
+    }
+  }
+
+  &__profile {
+    @include m.respond-to(desktop-up) {
+      max-width: 700px;
+    }
+  }
+
+  &__text {
+    color: v.$color-text-main;
+    font-size: v.$font-size-medium;
+    font-weight: v.$font-weight-regular;
+    line-height: v.$line-height-small;
+    @include m.respond-to(tablet-up) {
+      font-size: v.$font-size-large;
+      line-height: v.$line-height-medium;
+    }
+  }
+
+  &__title {
+    padding: 10px 0px 20px;
+    color: v.$color-text-main;
+    font-size: v.$font-size-x-large;
+    font-weight: v.$font-weight-medium;
+    line-height: v.$line-height-large-plus;
+    @include m.respond-to(tablet-up) {
+      font-size: v.$font-size-x-large-plus;
+      line-height: v.$line-height-x-large;
+    }
+    @include m.respond-to(desktop-up) {
+      font-size: v.$font-size-xx-large;
+      line-height: v.$line-height-xx-large;
+    }
+    @include m.text-writer-home;
+
+    &_type_colored {
+      background: v.$text-gradient;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      --caret: currentcolor;
+    }
+
+    &_type_colored::before {
+      content: "";
+      animation: typing 15s infinite;
+    }
+
+    &_type_colored::after {
+      content: "";
+      border-right: 1px solid var(--caret);
+      animation: blink 1s linear infinite;
+    }
+  }
+
+  &__images {
+    position: relative;
+    @include m.respond-to(desktop-up) {
+      max-width: 840px;
+    }
+  }
+
+  &__image {
+    border-radius: 16px;
+    border: 1px solid v.$color-border;
+
+    &_position_under {
+      display: none;
+      @include m.respond-to(desktop-large) {
+        display: block;
+        position: absolute;
+        z-index: 0;
+        top: 150px;
+        right: 190px;
+        animation: movingX 10s ease infinite alternate;
+      }
+    }
+
+    &_position_on {
+      @include m.respond-to(tablet-up) {
+        width: 340px;
+        height: 400px;
+      }
+      @include m.respond-to(desktop-up) {
+        width: 380px;
+        height: 460px;
+      }
+      @include m.respond-to(desktop-large) {
+        width: 462px;
+        height: 556px;
+        position: relative;
+        z-index: 2;
+        animation: movingY 10s ease infinite alternate;
+      }
+    }
+  }
+}

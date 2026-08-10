@@ -1,11 +1,10 @@
 import styles from "./page.module.scss";
+import MainPageHero from "@/_components/MainPageHero/MainPageHero";
 
 export default function Home() {
   return (
     <main className={styles.content}>
-      <div>
-        <p>Главная</p>
-      </div>
+      <MainPageHero />
     </main>
   );
 }
