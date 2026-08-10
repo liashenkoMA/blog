@@ -8,7 +8,11 @@ export default function MainPageHero() {
     <section className={styles.mainPageHero}>
       <div className={styles.mainPageHero__container}>
         <div className={styles.mainPageHero__profile}>
-          <p className={styles.mainPageHero__text}>Hello Everyone!</p>
+          <p
+            className={`${styles.mainPageHero__text} ${styles.mainPageHero__text_greeting}`}
+          >
+            Hello Everyone!
+          </p>
           <h1 className={styles.mainPageHero__title}>
             I`m
             <br />
