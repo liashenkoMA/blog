@@ -28,6 +28,7 @@ export default function MainPageLastArticleCard({
           height={300}
           alt={article.imageAlt}
           className={styles.mainPageLastArticleCard__image}
+          unoptimized // TODO: убрать после верстки
         />
       </Link>
 
@@ -38,28 +39,37 @@ export default function MainPageLastArticleCard({
         >
           {article.category.name}
         </Link>
-        <Link
-          href={`${article.category.slug}/${article.slug}`}
-          className={styles.mainPageLastArticleCard__title}
-        >
-          {article.title}
-        </Link>
+
+        <h2 className={styles.mainPageLastArticleCard__title}>
+          <Link
+            href={`${article.category.slug}/${article.slug}`}
+            className={styles.mainPageLastArticleCard__title_link}
+          >
+            {article.title}
+          </Link>
+        </h2>
+
         <p className={styles.mainPageLastArticleCard__description}>
           {article.description}
         </p>
 
         <div className={styles.mainPageLastArticleCard__meta}>
-          <p className={styles.mainPageLastArticleCard__metaItem}>
+          <time
+            dateTime={article.createdAt}
+            className={styles.mainPageLastArticleCard__metaItem}
+          >
             <span
               className={`${styles.mainPageLastArticleCard__metaIcon} ${styles.mainPageLastArticleCard__metaIcon_calendar}`}
+              aria-hidden="true"
             />
             {formatDate(article.createdAt)}
-          </p>
+          </time>
           <p className={styles.mainPageLastArticleCard__metaItem}>
             <span
               className={`${styles.mainPageLastArticleCard__metaIcon} ${styles.mainPageLastArticleCard__metaIcon_clock}`}
+              aria-hidden="true"
             />
-            {article.readingTime}
+            {article.readingTime} mins read
           </p>
         </div>
       </div>
