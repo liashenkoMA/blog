@@ -1,5 +1,5 @@
-import { getLastArticles } from "@/_utils/server/articleApi";
 import styles from "./mainPageLastArticles.module.scss";
+import { getLastArticles } from "@/_utils/server/articleApi";
 import MainPageLastArticleCard from "../MainPageLastArticleCard/MainPageLastArticleCard";
 
 export default async function MainPageLastArticles() {
