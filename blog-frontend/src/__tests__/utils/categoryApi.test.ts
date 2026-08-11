@@ -133,7 +133,7 @@ describe("Category API", () => {
         json: async () => mockResponse,
       } as Response);
 
-      const data: ICategoryResponse[] = await getCategories();
+      const data = await getCategories();
 
       await expect(data).toEqual(mockResponse);
       expect(mockFetch).toHaveBeenCalledTimes(1);
@@ -141,10 +141,8 @@ describe("Category API", () => {
         expect.stringContaining("/categories"),
         expect.objectContaining({
           method: "GET",
-          credentials: "include",
           headers: {
             "Content-Type": "application/json",
-            Cookie: "mock-cookie",
           },
         }),
       );

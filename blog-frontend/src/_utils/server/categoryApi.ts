@@ -1,5 +1,4 @@
 import { ICategoryResponse } from "@/_interfaces/interfaces";
-import { cookies } from "next/headers";
 
 const address = {
   SERVER_API_URL: process.env.API_BASE_URL,
@@ -16,24 +15,12 @@ async function checkResponse<T>(res: Response): Promise<T> {
 }
 
 export async function getCategories(): Promise<ICategoryResponse[]> {
-  const cookieStore = await cookies();
+  const res = await fetch(`${address.SERVER_API_URL}/categories`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
-  try {
-    const res = await fetch(`${address.SERVER_API_URL}/categories`, {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-        Cookie: cookieStore.toString(),
-      },
-    });
-
-    return checkResponse<ICategoryResponse[]>(res);
-  } catch (err) {
-    if (err instanceof Error) {
-      throw err;
-    }
-
-    throw new Error("Network error");
-  }
+  return checkResponse<ICategoryResponse[]>(res);
 }

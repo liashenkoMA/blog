@@ -153,3 +153,20 @@ export interface IArticleResponse extends IArticle {
 export interface IArticleCreateResponse {
   message: string;
 }
+
+export interface ILastArticleResponse {
+  _id: string;
+  slug: string;
+  title: string;
+  h1: string;
+  description: string;
+  category: ICategoryResponse;
+  tags: ITagResponse[];
+  image: string;
+  imageAlt: string;
+  readingTime: number;
+  status: "draft" | "published" | "archived";
+  publishedAt?: string;
+  createdAt: string;
+  updatedAt: string;
+}

@@ -1,0 +1,120 @@
+@use "../../variables" as v;
+@use "../../mixins" as m;
+
+.mainPageLastArticleCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  @include m.respond-to(desktop-up) {
+    max-width: 900px;
+    flex-direction: row;
+  }
+
+  &__imageLink {
+    max-width: 300px;
+    max-height: 300px;
+  }
+
+  &__image {
+    border-radius: 10px;
+    border: 1px solid v.$color-border;
+    @include m.hover {
+      cursor: pointer;
+      transition-duration: 0.2s;
+      transform: translateY(-2px);
+      border-color: v.$color-border-hover;
+      box-shadow: v.$shadow-default;
+    }
+  }
+
+  &__info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  &__category {
+    padding: 5px 15px;
+    display: block;
+    border: 1px solid v.$color-border;
+    border-radius: 25px;
+    background-color: v.$color-bg-element;
+    font-size: v.$font-size-medium;
+    font-weight: v.$font-weight-light;
+    line-height: v.$line-height-x-small;
+    color: v.$color-text-secondary;
+    @include m.hover {
+      cursor: pointer;
+      transition-duration: 0.2s;
+      transform: translateY(-2px);
+      border-color: v.$color-border-hover;
+      box-shadow: v.$shadow-default;
+      color: v.$color-text-hover;
+    }
+  }
+
+  &__title {
+    color: v.$color-text-heading;
+    font-size: v.$font-size-large-plus;
+    font-weight: v.$font-weight-medium;
+    line-height: v.$line-height-large;
+    @include m.hover {
+      cursor: pointer;
+      color: v.$color-text-hover;
+    }
+  }
+
+  &__description {
+    color: v.$color-text-secondary;
+    font-size: v.$font-size-medium;
+    font-weight: v.$font-weight-regular;
+    line-height: v.$line-height-x-small;
+  }
+
+  &__meta {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    @include m.respond-to(desktop-up) {
+      margin-top: auto;
+    }
+  }
+
+  &__metaItem {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    font-size: v.$font-size-medium;
+    font-weight: v.$font-weight-light;
+    line-height: v.$line-height-x-small;
+    color: v.$color-text-meta;
+  }
+
+  &__metaIcon {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-color: v.$color-accent-3;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+
+    &_calendar {
+      mask-image: url(../../_images/calendar-days.svg);
+      -webkit-mask-image: url(../../_images/calendar-days.svg);
+    }
+
+    &_clock {
+      mask-image: url(../../_images/clock.svg);
+      -webkit-mask-image: url(../../_images/clock.svg);
+    }
+  }
+
+  &__imageLink {
+  }
+}

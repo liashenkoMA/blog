@@ -30,7 +30,7 @@ describe('FileService', () => {
     } as Express.Multer.File;
 
     const filePath = {
-      filePath: `${process.env.URL_UPLOADIMG}/files/test.jpg`,
+      filePath: `${process.env.URL_UPLOADIMG}/uploads/test.jpg`,
     };
 
     const result = await service.addFile(mockFile);
@@ -43,10 +43,10 @@ describe('FileService', () => {
 
     const filePaths = [
       {
-        filePath: `${process.env.URL_UPLOADIMG}/files/image-1.jpg`,
+        filePath: `${process.env.URL_UPLOADIMG}/uploads/image-1.jpg`,
       },
       {
-        filePath: `${process.env.URL_UPLOADIMG}/files/image-2.png`,
+        filePath: `${process.env.URL_UPLOADIMG}/uploads/image-2.png`,
       },
     ];
 
@@ -67,7 +67,7 @@ describe('FileService', () => {
 
     expect(mockFs.stat).toHaveBeenCalledTimes(1);
     expect(result).toEqual({
-      filePath: `${process.env.URL_UPLOADIMG}/files/image-1.jpg`,
+      filePath: `${process.env.URL_UPLOADIMG}/uploads/image-1.jpg`,
     });
   });
 

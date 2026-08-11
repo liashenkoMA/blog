@@ -131,18 +131,16 @@ describe("Tag API", () => {
         json: async () => mockResponse,
       } as Response);
 
-      const data: ITagResponse[] = await getTags();
+      const data = await getTags();
 
-      await expect(data).toEqual(mockResponse);
+      expect(data).toEqual(mockResponse);
       expect(mockFetch).toHaveBeenCalledTimes(1);
       expect(mockFetch).toHaveBeenCalledWith(
         expect.stringContaining("/tags"),
         expect.objectContaining({
           method: "GET",
-          credentials: "include",
           headers: {
             "Content-Type": "application/json",
-            Cookie: "mock-cookie",
           },
         }),
       );

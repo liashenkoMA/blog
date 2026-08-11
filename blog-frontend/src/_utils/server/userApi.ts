@@ -20,22 +20,14 @@ async function checkResponse<T>(res: Response): Promise<T> {
 export async function getUser(): Promise<IUser> {
   const cookieStore = await cookies();
 
-  try {
-    const res = await fetch(`${address.SERVER_API_URL}/user`, {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-        Cookie: cookieStore.toString(),
-      },
-    });
+  const res = await fetch(`${address.SERVER_API_URL}/user`, {
+    method: "GET",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: cookieStore.toString(),
+    },
+  });
 
-    return checkResponse<IUser>(res);
-  } catch (err) {
-    if (err instanceof Error) {
-      throw err;
-    }
-
-    throw new Error("Network error");
-  }
+  return checkResponse<IUser>(res);
 }

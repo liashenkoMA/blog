@@ -1,0 +1,74 @@
+@use "../../variables" as v;
+@use "../../mixins" as m;
+
+.mainPageLastArticles {
+  padding-top: 64px;
+  @include m.respond-to(desktop-up) {
+    padding-top: 128px;
+  }
+
+  &__container {
+    margin: 0 auto;
+    max-width: 300px;
+    @include m.respond-to(tablet-up) {
+      max-width: 720px;
+    }
+    @include m.respond-to(desktop-up) {
+      max-width: 960px;
+    }
+    @include m.respond-to(desktop-large) {
+      max-width: 1280px;
+    }
+    @include m.respond-to(desktop-xl) {
+      max-width: 1440px;
+    }
+  }
+
+  &__header {
+    display: grid;
+    gap: 10px;
+    justify-content: center;
+    @include m.respond-to(tablet-up) {
+      justify-content: start;
+    }
+  }
+
+  &__title {
+    font-size: v.$font-size-large-plus;
+    font-weight: v.$font-weight-bold;
+    line-height: v.$line-height-large;
+    @include m.respond-to(tablet-up) {
+      font-size: v.$font-size-x-large-plus;
+      line-height: v.$line-height-x-large;
+    }
+
+    background: v.$text-gradient;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__text {
+    font-size: v.$font-size-medium;
+    font-weight: v.$font-weight-regular;
+    line-height: v.$line-height-x-small;
+    color: v.$color-text-secondary;
+    @include m.respond-to(tablet-up) {
+      font-size: v.$font-size-large;
+      line-height: v.$line-height-medium;
+    }
+  }
+
+  &__content {
+    padding-top: 30px;
+    display: grid;
+    gap: 30px;
+    @include m.respond-to(tablet-up) {
+      grid-template-columns: repeat(2, 300px);
+      justify-content: space-between;
+    }
+    @include m.respond-to(desktop-up) {
+      grid-template-columns: 1fr;
+    }
+  }
+}

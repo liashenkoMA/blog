@@ -1,7 +1,7 @@
 /* Base colors */
 
 $white: #ffffff;
-$white-blue: #d6e4f5;
+$white-blue: #b9e0f2;
 $black: #000000;
 $grey: #64748b;
 $grey-light: #263452;
@@ -51,11 +51,13 @@ $color-text-secondary: $grey-blue;
 $color-text-error: $red;
 $color-text-link: $blue-light; // add
 $color-text-hover: $blue; // add
+$color-text-meta: $grey;
 
 /* Accent colors */
 
 $color-accent-1: $cyan; // add
 $color-accent-2: $blue; // add
+$color-accent-3: $grey; // add
 
 /* Gradients */
 

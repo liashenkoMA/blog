@@ -46,9 +46,9 @@ describe("User API", () => {
         json: async () => mockResponse,
       } as Response);
 
-      const data: IUser = await getUser();
+      const data = await getUser();
 
-      await expect(data).toEqual(mockResponse);
+      expect(data).toEqual(mockResponse);
       expect(mockFetch).toHaveBeenCalledTimes(1);
       expect(mockFetch).toHaveBeenCalledWith(
         expect.stringContaining("/user"),

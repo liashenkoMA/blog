@@ -47,4 +47,6 @@ export class ArticleListResponseDto {
   readingTime: number;
   status: ArticleStatus;
   publishedAt?: Date;
+  createdAt: Date;
+  updatedAt: Date;
 }

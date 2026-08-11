@@ -1,4 +1,4 @@
-import { ITagResponse } from "@/_interfaces/interfaces";
+import { ILastArticleResponse } from "@/_interfaces/interfaces";
 
 const address = {
   SERVER_API_URL: process.env.API_BASE_URL,
@@ -14,13 +14,13 @@ async function checkResponse<T>(res: Response): Promise<T> {
   return result;
 }
 
-export async function getTags(): Promise<ITagResponse[]> {
-  const res = await fetch(`${address.SERVER_API_URL}/tags`, {
+export async function getLastArticles(): Promise<ILastArticleResponse[]> {
+  const res = await fetch(`${address.SERVER_API_URL}/articles/last`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
   });
 
-  return checkResponse<ITagResponse[]>(res);
+  return checkResponse<ILastArticleResponse[]>(res);
 }

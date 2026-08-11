@@ -1,0 +1,25 @@
+import { getLastArticles } from "@/_utils/server/articleApi";
+import styles from "./mainPageLastArticles.module.scss";
+import MainPageLastArticleCard from "../MainPageLastArticleCard/MainPageLastArticleCard";
+
+export default async function MainPageLastArticles() {
+  const lastArticles = await getLastArticles();
+
+  return (
+    <section className={styles.mainPageLastArticles}>
+      <div className={styles.mainPageLastArticles__container}>
+        <div className={styles.mainPageLastArticles__header}>
+          <h2 className={styles.mainPageLastArticles__title}>Новые статьи</h2>
+          <p className={styles.mainPageLastArticles__text}>
+            Последние статьи моего блога!
+          </p>
+        </div>
+        <div className={styles.mainPageLastArticles__content}>
+          {lastArticles.map((article) => (
+            <MainPageLastArticleCard key={article._id} article={article} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

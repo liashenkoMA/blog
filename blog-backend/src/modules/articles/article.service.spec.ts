@@ -123,6 +123,8 @@ describe('ArticleService', () => {
           readingTime: 1,
           status: ArticleStatus.PUBLISHED,
           publishedAt: new Date(),
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
       ];
 
@@ -215,6 +217,8 @@ describe('ArticleService', () => {
           readingTime: 1,
           status: ArticleStatus.PUBLISHED,
           publishedAt: new Date(),
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
       ];
 
@@ -326,6 +330,8 @@ describe('ArticleService', () => {
           readingTime: 1,
           status: ArticleStatus.PUBLISHED,
           publishedAt: new Date(),
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
       ];
 
@@ -407,6 +413,8 @@ describe('ArticleService', () => {
           readingTime: 1,
           status: ArticleStatus.PUBLISHED,
           publishedAt: new Date(),
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
       ];
 

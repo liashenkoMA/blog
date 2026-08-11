@@ -8,7 +8,7 @@ export class FileService {
 
   async addFile(file: Express.Multer.File) {
     return {
-      filePath: `${process.env.URL_UPLOADIMG}/files/${file.filename}`,
+      filePath: `${process.env.URL_UPLOADIMG}/uploads/${file.filename}`,
     };
   }
 
@@ -16,7 +16,7 @@ export class FileService {
     const files = await fs.readdir(this.uploadPath);
 
     return files.map((file) => ({
-      filePath: `${process.env.URL_UPLOADIMG}/files/${file}`,
+      filePath: `${process.env.URL_UPLOADIMG}/uploads/${file}`,
     }));
   }
 
@@ -26,7 +26,7 @@ export class FileService {
     await fs.stat(filePath);
 
     return {
-      filePath: `${process.env.URL_UPLOADIMG}/files/${filename}`,
+      filePath: `${process.env.URL_UPLOADIMG}/uploads/${filename}`,
     };
   }
 

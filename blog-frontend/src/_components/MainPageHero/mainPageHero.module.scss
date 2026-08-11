@@ -3,6 +3,7 @@
 
 .mainPageHero {
   padding-top: 64px;
+  padding-bottom: 10px;
   background-color: v.$color-bg-element;
   @include m.respond-to(desktop-up) {
     padding-top: 128px;
@@ -49,7 +50,6 @@
 
   &__text_greeting {
     font-weight: v.$font-weight-medium;
-    color: v.$color-text-secondary;
   }
 
   &__title {

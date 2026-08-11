@@ -88,9 +88,9 @@ describe("Auth Api", () => {
         json: async () => ({ message: "Internal Server Error" }),
       } as Response);
 
-      await expect(login(mockFormData)).rejects.toThrow(
-        "Internal Server Error",
-      );
+      await expect(login(mockFormData)).resolves.toEqual({
+        error: "Internal Server Error",
+      });
       expect(mockFetch).toHaveBeenCalledTimes(1);
     });
   });
