@@ -8,6 +8,7 @@
   @include m.respond-to(desktop-up) {
     max-width: 900px;
     flex-direction: row;
+    gap: 20px;
   }
 
   &__imageLink {
@@ -60,6 +61,15 @@
     font-size: v.$font-size-large-plus;
     font-weight: v.$font-weight-medium;
     line-height: v.$line-height-large;
+    line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    @include m.respond-to(desktop-up) {
+      line-clamp: 2;
+      -webkit-line-clamp: 2;
+    }
     @include m.hover {
       cursor: pointer;
       color: v.$color-text-hover;
@@ -70,7 +80,16 @@
     color: v.$color-text-secondary;
     font-size: v.$font-size-medium;
     font-weight: v.$font-weight-regular;
-    line-height: v.$line-height-x-small;
+    line-height: v.$line-height-small;
+    line-clamp: 6;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    overflow: hidden;
+    @include m.respond-to(desktop-up) {
+      line-clamp: 5;
+      -webkit-line-clamp: 5;
+    }
   }
 
   &__meta {

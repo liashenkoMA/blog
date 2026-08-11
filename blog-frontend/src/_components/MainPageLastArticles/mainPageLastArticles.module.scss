@@ -27,10 +27,6 @@
   &__header {
     display: grid;
     gap: 10px;
-    justify-content: center;
-    @include m.respond-to(tablet-up) {
-      justify-content: start;
-    }
   }
 
   &__title {
@@ -68,7 +64,9 @@
       justify-content: space-between;
     }
     @include m.respond-to(desktop-up) {
+      padding-top: 60px;
       grid-template-columns: 1fr;
+      gap: 60px;
     }
   }
 }

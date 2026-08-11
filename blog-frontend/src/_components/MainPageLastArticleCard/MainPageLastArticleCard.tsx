@@ -28,7 +28,6 @@ export default function MainPageLastArticleCard({
           height={300}
           alt={article.imageAlt}
           className={styles.mainPageLastArticleCard__image}
-          unoptimized // TODO: убрать после верстки
         />
       </Link>
 
