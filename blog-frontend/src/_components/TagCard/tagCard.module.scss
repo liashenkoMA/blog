@@ -1,16 +1,14 @@
 @use "../../variables" as v;
 @use "../../mixins" as m;
 
-.sidebarComponentCategory {
-  padding: 0px 10px;
-
+.tagCard {
   &__link {
     padding: 0px 10px;
-    width: 100%;
-    min-height: 60px;
+    min-width: 200px;
+    min-height: 72px;
     border-radius: 20px;
     border: 1px solid v.$color-border;
-    background-color: v.$color-bg-element;
+    background-color: v.$color-bg-page;
     display: flex;
     gap: 7px;
     align-items: center;

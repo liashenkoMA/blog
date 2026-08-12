@@ -10,7 +10,7 @@ jest.mock("../../_utils/server/categoryApi", () => ({
   getCategories: jest.fn(),
 }));
 
-describe("Sidebar", () => {
+describe("Sidebar component", () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });

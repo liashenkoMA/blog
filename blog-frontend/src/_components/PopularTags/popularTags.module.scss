@@ -1,7 +1,7 @@
 @use "../../variables" as v;
 @use "../../mixins" as m;
 
-.mainPageLastArticles {
+.popularTags {
   padding-top: 64px;
   @include m.respond-to(desktop-up) {
     padding-top: 128px;
@@ -61,23 +61,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 30px;
-    @include m.respond-to(desktop-up) {
-      flex-direction: row;
-      gap: 60px;
-    }
-  }
-
-  &__lists {
-    display: grid;
-    gap: 30px;
+    gap: 20px;
     @include m.respond-to(tablet-up) {
-      grid-template-columns: repeat(2, 300px);
-      justify-content: space-between;
-    }
-    @include m.respond-to(desktop-up) {
-      grid-template-columns: 1fr;
-      gap: 60px;
+      flex-direction: row;
+      flex-wrap: wrap;
     }
   }
 }

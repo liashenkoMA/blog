@@ -1,7 +1,14 @@
+@use "../../mixins" as m;
+
 .sidebar {
-  padding-top: 60px;
   max-width: 300px;
   display: flex;
   flex-direction: column;
   gap: 60px;
+  @include m.respond-to(tablet) {
+    max-width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
 }
