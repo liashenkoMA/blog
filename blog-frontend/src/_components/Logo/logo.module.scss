@@ -8,8 +8,8 @@
 
   &__image {
     @include m.respond-to(tablet-up) {
-      width: 77px;
-      height: 42px;
+      width: 88px;
+      height: 52px;
     }
   }
 
@@ -19,7 +19,7 @@
     font-weight: v.$font-weight-regular;
     line-height: v.$line-height-medium;
     @include m.respond-to(tablet-up) {
-      font-size: v.$font-size-large;
+      font-size: v.$font-size-large-plus;
       line-height: v.$line-height-large;
     }
   }

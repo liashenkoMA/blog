@@ -1,6 +1,7 @@
 import styles from "./mainPageLastArticles.module.scss";
 import { getLastArticles } from "@/_utils/server/articleApi";
 import MainPageLastArticleCard from "../MainPageLastArticleCard/MainPageLastArticleCard";
+import Sidebar from "../Sidebar/Sidebar";
 
 export default async function MainPageLastArticles() {
   const lastArticles = await getLastArticles();
@@ -15,9 +16,12 @@ export default async function MainPageLastArticles() {
           </p>
         </div>
         <div className={styles.mainPageLastArticles__content}>
-          {lastArticles.map((article) => (
-            <MainPageLastArticleCard key={article._id} article={article} />
-          ))}
+          <div className={styles.mainPageLastArticles__lists}>
+            {lastArticles.map((article) => (
+              <MainPageLastArticleCard key={article._id} article={article} />
+            ))}
+          </div>
+          <Sidebar />
         </div>
       </div>
     </section>

@@ -56,6 +56,15 @@
   }
 
   &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @include m.respond-to(tablet-up) {
+      flex-direction: row;
+    }
+  }
+
+  &__lists {
     padding-top: 30px;
     display: grid;
     gap: 30px;
