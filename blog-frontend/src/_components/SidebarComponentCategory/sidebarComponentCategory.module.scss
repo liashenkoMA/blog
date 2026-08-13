@@ -1,8 +1,9 @@
-@use "../../../variables" as v;
-@use "../../../mixins" as m;
+@use "../../variables" as v;
+@use "../../mixins" as m;
 
-.sidebarComponent {
+.sidebarComponentCategory {
   padding: 0px 10px;
+  width: 100%;
 
   &__link {
     padding: 0px 10px;
@@ -21,7 +22,7 @@
     @include m.hover {
       transition-duration: 0.2s;
       color: v.$blue;
-      border: 1px solid v.$color-border-hover;
+      border-color: v.$color-border-hover;
       box-shadow: v.$shadow-default;
       transform: translateY(-2px);
     }
