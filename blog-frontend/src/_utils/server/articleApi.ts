@@ -1,4 +1,7 @@
-import { ILastArticleResponse } from "@/_interfaces/interfaces";
+import {
+  IArticleListResponse,
+  ILastArticleResponse,
+} from "@/_interfaces/interfaces";
 
 const address = {
   SERVER_API_URL: process.env.API_BASE_URL,
@@ -23,4 +26,15 @@ export async function getLastArticles(): Promise<ILastArticleResponse[]> {
   });
 
   return checkResponse<ILastArticleResponse[]>(res);
+}
+
+export async function getArticles(page: number): Promise<IArticleListResponse> {
+  const res = await fetch(`${address.SERVER_API_URL}/articles?page=${page}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  return checkResponse<IArticleListResponse>(res);
 }

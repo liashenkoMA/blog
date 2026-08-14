@@ -1,10 +1,11 @@
 import {
   IArticle,
   IArticleCreateResponse,
+  IArticleListResponse,
   ILastArticleResponse,
 } from "@/_interfaces/interfaces";
 import { createArticle } from "@/_utils/client/articleApi";
-import { getLastArticles } from "@/_utils/server/articleApi";
+import { getArticles, getLastArticles } from "@/_utils/server/articleApi";
 
 global.fetch = jest.fn();
 
@@ -117,7 +118,9 @@ describe("Article Api", () => {
           imageAlt: "Тестовая статья",
           readingTime: 5,
           status: "published",
-          publishedAt: new Date("2026-08-11"),
+          publishedAt: "2026-08-11",
+          createdAt: "2026-08-11",
+          updatedAt: "2026-08-11",
         },
         {
           _id: "id2",
@@ -149,7 +152,9 @@ describe("Article Api", () => {
           imageAlt: "Другая статья",
           readingTime: 7,
           status: "published",
-          publishedAt: new Date("2026-08-10"),
+          publishedAt: "2026-08-10",
+          createdAt: "2026-08-11",
+          updatedAt: "2026-08-11",
         },
       ];
 
@@ -179,6 +184,119 @@ describe("Article Api", () => {
       } as Response);
 
       await expect(getLastArticles()).rejects.toThrow("Internal Server Error");
+      expect(mockFetch).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe("getArticles", () => {
+    it("Ошибка сети при получении статей", async () => {
+      mockFetch.mockRejectedValueOnce(new Error("Network Error"));
+
+      await expect(getArticles(1)).rejects.toThrow("Network Error");
+      expect(mockFetch).toHaveBeenCalledTimes(1);
+    });
+
+    it("Успешное получение статей", async () => {
+      const mockResponse: IArticleListResponse = {
+        articles: [
+          {
+            _id: "id1",
+            slug: "test-article",
+            title: "Тестовая статья",
+            h1: "Тестовая статья",
+            description: "Описание тестовой статьи",
+            category: {
+              _id: "category-id1",
+              slug: "frontend",
+              name: "Frontend",
+              image: "https://example.com/frontend.jpg",
+              imageAlt: "Frontend",
+              title: "Frontend разработка",
+              description: "Статьи о frontend разработке",
+            },
+            tags: [
+              {
+                _id: "tag-id1",
+                slug: "react",
+                name: "React",
+                image: "https://example.com/react.jpg",
+                imageAlt: "React",
+                title: "React",
+                description: "Статьи о React",
+              },
+            ],
+            image: "https://example.com/article.jpg",
+            imageAlt: "Тестовая статья",
+            readingTime: 5,
+            status: "published",
+            publishedAt: "2026-08-11",
+            createdAt: "2026-08-11",
+            updatedAt: "2026-08-11",
+          },
+          {
+            _id: "id2",
+            slug: "another-article",
+            title: "Другая статья",
+            h1: "Другая статья",
+            description: "Описание другой статьи",
+            category: {
+              _id: "category-id2",
+              slug: "backend",
+              name: "Backend",
+              image: "https://example.com/backend.jpg",
+              imageAlt: "Backend",
+              title: "Backend разработка",
+              description: "Статьи о Backend",
+            },
+            tags: [
+              {
+                _id: "tag-id2",
+                slug: "nestjs",
+                name: "NestJS",
+                image: "https://example.com/nestjs.jpg",
+                imageAlt: "NestJS",
+                title: "NestJS",
+                description: "Статьи о NestJS",
+              },
+            ],
+            image: "https://example.com/another.jpg",
+            imageAlt: "Другая статья",
+            readingTime: 7,
+            status: "published",
+            publishedAt: "2026-08-10",
+            createdAt: "2026-08-11",
+            updatedAt: "2026-08-11",
+          },
+        ],
+        totalCount: 2,
+      };
+
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        json: async () => mockResponse,
+      } as Response);
+
+      const data = await getArticles(1);
+
+      expect(data).toEqual(mockResponse);
+      expect(mockFetch).toHaveBeenCalledTimes(1);
+      expect(mockFetch).toHaveBeenCalledWith(
+        expect.stringContaining("/articles?page=1"),
+        expect.objectContaining({
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        }),
+      );
+    });
+
+    it("Сервер вернул !res.ok", async () => {
+      mockFetch.mockResolvedValueOnce({
+        ok: false,
+        status: 500,
+        json: async () => ({ message: "Internal Server Error" }),
+      } as Response);
+
+      await expect(getArticles(1)).rejects.toThrow("Internal Server Error");
       expect(mockFetch).toHaveBeenCalledTimes(1);
     });
   });

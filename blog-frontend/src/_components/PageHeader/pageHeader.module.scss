@@ -1,0 +1,67 @@
+@use "../../variables" as v;
+@use "../../mixins" as m;
+
+.pageHeader {
+  padding: 30px 0px;
+  width: 100%;
+  border-bottom: 1px solid v.$color-border;
+  @include m.respond-to(desktop-up) {
+    padding: 0px 0px 60px 0px;
+  }
+
+  &__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    @include m.respond-to(desktop-up) {
+      flex-direction: row;
+      gap: 60px;
+    }
+  }
+
+  &__image {
+    border-radius: 50%;
+    border: 1px solid v.$color-border;
+    @include m.hover {
+      cursor: pointer;
+      transition-duration: 0.2s;
+      transform: translateY(-2px);
+      border-color: v.$color-border-hover;
+      box-shadow: v.$shadow-default;
+    }
+  }
+
+  &__content {
+    display: grid;
+  }
+
+  &__text {
+    text-align: center;
+    color: v.$color-text-secondary;
+    font-size: v.$font-size-small;
+    font-weight: v.$font-weight-regular;
+    line-height: v.$line-height-x-small;
+    @include m.respond-to(tablet-up) {
+      text-align: left;
+      font-size: v.$font-size-large;
+      line-height: v.$line-height-medium-plus;
+    }
+  }
+
+  &__title {
+    color: v.$color-text-heading;
+    font-size: v.$font-size-x-large;
+    font-weight: v.$font-weight-medium;
+    line-height: v.$line-height-large-plus;
+    @include m.respond-to(tablet-up) {
+      font-size: v.$font-size-x-large-plus;
+      line-height: v.$line-height-x-large;
+    }
+    @include m.respond-to(desktop-up) {
+      font-size: v.$font-size-xx-large;
+      line-height: v.$line-height-xx-large;
+    }
+  }
+}

@@ -54,10 +54,8 @@ describe("User API", () => {
         expect.stringContaining("/user"),
         expect.objectContaining({
           method: "GET",
-          credentials: "include",
           headers: {
             "Content-Type": "application/json",
-            Cookie: "mock-cookie",
           },
         }),
       );

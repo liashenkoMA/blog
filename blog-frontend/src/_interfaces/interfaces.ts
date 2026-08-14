@@ -170,3 +170,8 @@ export interface ILastArticleResponse {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface IArticleListResponse {
+  articles: ILastArticleResponse[];
+  totalCount: number;
+}

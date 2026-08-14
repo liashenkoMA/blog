@@ -1,0 +1,47 @@
+@use "../../../variables" as v;
+@use "../../../mixins" as m;
+
+.blog {
+  max-width: 300px;
+  margin: 0 auto;
+
+  @include m.respond-to(tablet-up) {
+    max-width: 720px;
+  }
+  @include m.respond-to(desktop-up) {
+    max-width: 960px;
+    gap: 60px;
+  }
+  @include m.respond-to(desktop-large) {
+    max-width: 1280px;
+  }
+  @include m.respond-to(desktop-xl) {
+    max-width: 1440px;
+  }
+
+  &__container {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+    @include m.respond-to(desktop-up) {
+      padding-top: 60px;
+      flex-direction: row;
+      gap: 60px;
+    }
+  }
+
+  &__content {
+    display: grid;
+    gap: 30px;
+    @include m.respond-to(tablet-up) {
+      grid-template-columns: repeat(2, 300px);
+      justify-content: space-between;
+    }
+    @include m.respond-to(desktop-up) {
+      grid-template-columns: 1fr;
+      gap: 60px;
+    }
+  }
+}

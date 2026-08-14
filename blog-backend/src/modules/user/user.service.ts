@@ -60,10 +60,8 @@ export class UserService {
     };
   }
 
-  async getUser(request: Request): Promise<GetUserResponseDto> {
-    const payload = await this.validateAndGetPayload(request);
-
-    const user = await this.userModel.findById(payload.sub).exec();
+  async getUser(): Promise<GetUserResponseDto> {
+    const user = await this.userModel.findOne().exec();
 
     if (!user) {
       throw new NotFoundException('Такого пользователя не существует');

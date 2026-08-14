@@ -1,6 +1,6 @@
 import styles from "./mainPageLastArticles.module.scss";
 import { getLastArticles } from "@/_utils/server/articleApi";
-import MainPageLastArticleCard from "../MainPageLastArticleCard/MainPageLastArticleCard";
+import ArticleCard from "../ArticleCard/ArticleCard";
 import Sidebar from "../Sidebar/Sidebar";
 import { Suspense } from "react";
 
@@ -19,7 +19,7 @@ export default async function MainPageLastArticles() {
         <div className={styles.mainPageLastArticles__content}>
           <div className={styles.mainPageLastArticles__lists}>
             {lastArticles.map((article) => (
-              <MainPageLastArticleCard key={article._id} article={article} />
+              <ArticleCard key={article._id} article={article} />
             ))}
           </div>
           <Suspense fallback={<div>Загрузка сайдбара... (Временно)</div>}>

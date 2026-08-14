@@ -27,6 +27,7 @@ describe('UserService', () => {
 
     mockUserModel = jest.fn();
 
+    mockUserModel.findOne = jest.fn();
     mockUserModel.findById = jest.fn();
     mockUserModel.findByIdAndUpdate = jest.fn();
 
@@ -129,34 +130,18 @@ describe('UserService', () => {
 
   describe('getUser', () => {
     it('Ошибка пользователь не существует', async () => {
-      mockJwtService.verifyAsync.mockResolvedValue({ sub: 'user_id' });
-
-      const request = {
-        cookies: { session_blog_lm: 'valid_token' },
-      } as unknown as Request;
-
       const execMock = jest.fn().mockResolvedValue(null);
 
-      mockUserModel.findById.mockReturnValue({
+      mockUserModel.findOne.mockReturnValue({
         exec: execMock,
       });
 
-      await expect(service.getUser(request)).rejects.toThrow(NotFoundException);
-      expect(mockJwtService.verifyAsync).toHaveBeenCalledWith('valid_token', {
-        secret: process.env.JWT_CONSTANT,
-      });
-      expect(mockUserModel.findById).toHaveBeenCalledWith('user_id');
-      expect(mockUserModel.findById).toHaveBeenCalledTimes(1);
+      await expect(service.getUser()).rejects.toThrow(NotFoundException);
+      expect(mockUserModel.findOne).toHaveBeenCalledTimes(1);
       expect(execMock).toHaveBeenCalledTimes(1);
     });
 
     it('Успешное получение пользователя', async () => {
-      mockJwtService.verifyAsync.mockResolvedValue({ sub: 'user_id' });
-
-      const request = {
-        cookies: { session_blog_lm: 'valid_token' },
-      } as unknown as Request;
-
       const user = {
         name: 'Иван',
         email: 'test@mail.com',
@@ -170,14 +155,13 @@ describe('UserService', () => {
 
       const execMock = jest.fn().mockResolvedValue(user);
 
-      mockUserModel.findById.mockReturnValue({
+      mockUserModel.findOne.mockReturnValue({
         exec: execMock,
       });
 
-      const result = await service.getUser(request);
+      const result = await service.getUser();
 
-      expect(mockUserModel.findById).toHaveBeenCalledWith('user_id');
-      expect(mockUserModel.findById).toHaveBeenCalledTimes(1);
+      expect(mockUserModel.findOne).toHaveBeenCalledTimes(1);
       expect(execMock).toHaveBeenCalledTimes(1);
       expect(result).toEqual({
         name: 'Иван',

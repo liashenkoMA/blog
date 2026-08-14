@@ -1,7 +1,7 @@
 @use "../../variables" as v;
 @use "../../mixins" as m;
 
-.mainPageLastArticleCard {
+.articleCard {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -9,6 +9,9 @@
     max-width: 900px;
     flex-direction: row;
     gap: 20px;
+  }
+  @include m.respond-to(desktop-xl) {
+    max-width: 1200px;
   }
 
   &__imageLink {

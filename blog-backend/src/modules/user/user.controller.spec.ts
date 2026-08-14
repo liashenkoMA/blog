@@ -44,10 +44,6 @@ describe('UserController', () => {
   });
 
   it('getUser', async () => {
-    const request = {
-      cookies: { session_blog_lm: 'token' },
-    } as unknown as Request;
-
     const user = {
       name: 'Иван',
       email: 'test@mail.ru',
@@ -55,9 +51,8 @@ describe('UserController', () => {
 
     mockUserService.getUser.mockResolvedValue(user);
 
-    const result = await controller.getUser(request);
+    const result = await controller.getUser();
 
-    expect(mockUserService.getUser).toHaveBeenCalledWith(request);
     expect(mockUserService.getUser).toHaveBeenCalledTimes(1);
     expect(result).toEqual(user);
   });
