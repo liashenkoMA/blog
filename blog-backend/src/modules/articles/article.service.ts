@@ -61,7 +61,7 @@ export class ArticleService {
     slug: string,
     page: number,
   ): Promise<{
-    categoryArticles: ArticleListResponseDto[];
+    articles: ArticleListResponseDto[];
     totalCount: number;
   }> {
     const category = await this.categoryModel.findOne({ slug }).exec();
@@ -73,7 +73,7 @@ export class ArticleService {
     const limit = 6;
     const skip = (page - 1) * limit;
 
-    const categoryArticles = await this.articleModel
+    const articles = await this.articleModel
       .find({
         category: category._id,
         status: ArticleStatus.PUBLISHED,
@@ -92,18 +92,18 @@ export class ArticleService {
       })
       .exec();
 
-    if (categoryArticles.length === 0) {
+    if (articles.length === 0) {
       throw new NotFoundException('Статьи не найдены');
     }
 
-    return { categoryArticles, totalCount };
+    return { articles, totalCount };
   }
 
   async getTagArticles(
     slug: string,
     page: number,
   ): Promise<{
-    tagArticles: ArticleListResponseDto[];
+    articles: ArticleListResponseDto[];
     totalCount: number;
   }> {
     const tag = await this.tagModel.findOne({ slug }).exec();
@@ -115,7 +115,7 @@ export class ArticleService {
     const limit = 6;
     const skip = (page - 1) * limit;
 
-    const tagArticles = await this.articleModel
+    const articles = await this.articleModel
       .find({
         tags: tag._id,
         status: ArticleStatus.PUBLISHED,
@@ -134,11 +134,11 @@ export class ArticleService {
       })
       .exec();
 
-    if (tagArticles.length === 0) {
+    if (articles.length === 0) {
       throw new NotFoundException('Статьи не найдены');
     }
 
-    return { tagArticles, totalCount };
+    return { articles, totalCount };
   }
 
   async getAllArticles(

@@ -4,7 +4,7 @@ import {
   ITagResponse,
 } from "@/_interfaces/interfaces";
 import { createTag } from "../../_utils/client/tagApi";
-import { getTags } from "@/_utils/server/tagApi";
+import { getTag, getTags } from "@/_utils/server/tagApi";
 
 global.fetch = jest.fn();
 
@@ -154,6 +154,57 @@ describe("Tag API", () => {
       } as Response);
 
       await expect(getTags()).rejects.toThrow("Internal Server Error");
+      expect(mockFetch).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe("getTag", () => {
+    it("Ошибка сети при получении тега", async () => {
+      mockFetch.mockRejectedValueOnce(new Error("Network Error"));
+
+      await expect(getTag("frontend")).rejects.toThrow("Network Error");
+      expect(mockFetch).toHaveBeenCalledTimes(1);
+    });
+
+    it("Успешное получение тега", async () => {
+      const mockResponse: ITagResponse = {
+        _id: "id1",
+        slug: "frontend",
+        name: "Frontend",
+        image: "https://example.com/frontend.jpg",
+        imageAlt: "Frontend",
+        title: "Frontend",
+        description: "Тег Frontend",
+      };
+
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        json: async () => mockResponse,
+      } as Response);
+
+      const data = await getTag("frontend");
+
+      expect(data).toEqual(mockResponse);
+      expect(mockFetch).toHaveBeenCalledTimes(1);
+      expect(mockFetch).toHaveBeenCalledWith(
+        expect.stringContaining("/tags/frontend"),
+        expect.objectContaining({
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }),
+      );
+    });
+
+    it("Сервер вернул !res.ok", async () => {
+      mockFetch.mockResolvedValueOnce({
+        ok: false,
+        status: 500,
+        json: async () => ({ message: "Internal Server Error" }),
+      } as Response);
+
+      await expect(getTag("frontend")).rejects.toThrow("Internal Server Error");
       expect(mockFetch).toHaveBeenCalledTimes(1);
     });
   });

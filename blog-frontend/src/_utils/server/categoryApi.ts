@@ -24,3 +24,14 @@ export async function getCategories(): Promise<ICategoryResponse[]> {
 
   return checkResponse<ICategoryResponse[]>(res);
 }
+
+export async function getCategory(slug: string): Promise<ICategoryResponse> {
+  const res = await fetch(`${address.SERVER_API_URL}/categories/${slug}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  return checkResponse<ICategoryResponse>(res);
+}

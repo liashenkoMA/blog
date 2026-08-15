@@ -4,7 +4,7 @@ import {
   ICategoryResponse,
 } from "@/_interfaces/interfaces";
 import { createCategory } from "../../_utils/client/categoryApi";
-import { getCategories } from "@/_utils/server/categoryApi";
+import { getCategories, getCategory } from "@/_utils/server/categoryApi";
 
 global.fetch = jest.fn();
 
@@ -156,6 +156,59 @@ describe("Category API", () => {
       } as Response);
 
       await expect(getCategories()).rejects.toThrow("Internal Server Error");
+      expect(mockFetch).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe("getCategory", () => {
+    it("Ошибка сети при получении категории", async () => {
+      mockFetch.mockRejectedValueOnce(new Error("Network Error"));
+
+      await expect(getCategory("frontend")).rejects.toThrow("Network Error");
+      expect(mockFetch).toHaveBeenCalledTimes(1);
+    });
+
+    it("Успешное получение категории", async () => {
+      const mockResponse: ICategoryResponse = {
+        _id: "id1",
+        slug: "frontend",
+        name: "Frontend",
+        image: "https://example.com/frontend.jpg",
+        imageAlt: "Frontend",
+        title: "Frontend разработка",
+        description: "Статьи о frontend разработке",
+      };
+
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        json: async () => mockResponse,
+      } as Response);
+
+      const data = await getCategory("frontend");
+
+      expect(data).toEqual(mockResponse);
+      expect(mockFetch).toHaveBeenCalledTimes(1);
+      expect(mockFetch).toHaveBeenCalledWith(
+        expect.stringContaining("/categories/frontend"),
+        expect.objectContaining({
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }),
+      );
+    });
+
+    it("Сервер вернул !res.ok", async () => {
+      mockFetch.mockResolvedValueOnce({
+        ok: false,
+        status: 500,
+        json: async () => ({ message: "Internal Server Error" }),
+      } as Response);
+
+      await expect(getCategory("frontend")).rejects.toThrow(
+        "Internal Server Error",
+      );
       expect(mockFetch).toHaveBeenCalledTimes(1);
     });
   });

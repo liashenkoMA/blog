@@ -38,3 +38,37 @@ export async function getArticles(page: number): Promise<IArticleListResponse> {
 
   return checkResponse<IArticleListResponse>(res);
 }
+
+export async function getCategoryArticles(
+  slug: string,
+  page: number,
+): Promise<IArticleListResponse> {
+  const res = await fetch(
+    `${address.SERVER_API_URL}/articles/category/${slug}?page=${page}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    },
+  );
+
+  return checkResponse<IArticleListResponse>(res);
+}
+
+export async function getTagArticles(
+  slug: string,
+  page: number,
+): Promise<IArticleListResponse> {
+  const res = await fetch(
+    `${address.SERVER_API_URL}/articles/tag/${slug}?page=${page}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    },
+  );
+
+  return checkResponse<IArticleListResponse>(res);
+}

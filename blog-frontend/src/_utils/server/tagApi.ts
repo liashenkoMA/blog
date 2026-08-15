@@ -24,3 +24,14 @@ export async function getTags(): Promise<ITagResponse[]> {
 
   return checkResponse<ITagResponse[]>(res);
 }
+
+export async function getTag(slug: string): Promise<ITagResponse> {
+  const res = await fetch(`${address.SERVER_API_URL}/tags/${slug}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  return checkResponse<ITagResponse>(res);
+}

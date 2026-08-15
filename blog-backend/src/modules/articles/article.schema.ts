@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument, Types } from 'mongoose';
+import mongoose, { HydratedDocument, Types } from 'mongoose';
 
 export enum ArticleStatus {
   DRAFT = 'draft',
@@ -22,14 +22,14 @@ export class Article {
   description: string;
 
   @Prop({
-    type: Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Category',
     required: true,
   })
   category: Types.ObjectId;
 
   @Prop({
-    type: [{ type: Types.ObjectId, ref: 'Tag' }],
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tag' }],
     default: [],
   })
   tags: Types.ObjectId[];

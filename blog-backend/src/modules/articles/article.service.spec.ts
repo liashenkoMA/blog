@@ -156,7 +156,6 @@ describe('ArticleService', () => {
       await expect(service.getCategoryArticles(mockSlug, 1)).rejects.toThrow(
         NotFoundException,
       );
-
       expect(mockCategoryModel.findOne).toHaveBeenCalledWith({
         slug: mockSlug,
       });
@@ -244,7 +243,7 @@ describe('ArticleService', () => {
       const result = await service.getCategoryArticles(mockSlug, 1);
 
       expect(result).toEqual({
-        categoryArticles: mockResponse,
+        articles: mockResponse,
         totalCount: 1,
       });
       expect(mockArticleModel.find).toHaveBeenCalledWith({
@@ -357,7 +356,7 @@ describe('ArticleService', () => {
       const result = await service.getTagArticles(mockSlug, 1);
 
       expect(result).toEqual({
-        tagArticles: mockResponse,
+        articles: mockResponse,
         totalCount: 1,
       });
       expect(mockArticleModel.find).toHaveBeenCalledWith({
