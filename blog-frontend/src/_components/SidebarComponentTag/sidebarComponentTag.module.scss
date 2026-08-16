@@ -5,11 +5,6 @@
   padding: 0px 10px;
 
   &__link {
-    padding: 0px 10px;
-    min-height: 40px;
-    border-radius: 20px;
-    border: 1px solid v.$color-border;
-    background-color: v.$color-bg-element;
     display: flex;
     align-items: center;
     font-size: v.$font-size-medium;
@@ -19,8 +14,6 @@
     @include m.hover {
       transition-duration: 0.2s;
       color: v.$blue;
-      border: 1px solid v.$color-border-hover;
-      box-shadow: v.$shadow-default;
       transform: translateY(-2px);
     }
   }
