@@ -1,10 +1,8 @@
-@use "../../../variables" as v;
 @use "../../../mixins" as m;
 
 .category {
   max-width: 300px;
   margin: 0 auto;
-
   @include m.respond-to(tablet-up) {
     max-width: 720px;
   }

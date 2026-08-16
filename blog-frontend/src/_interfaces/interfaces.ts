@@ -148,6 +148,9 @@ export interface IArticle {
 
 export interface IArticleResponse extends IArticle {
   _id: string;
+  publishedAt?: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface IArticleCreateResponse {

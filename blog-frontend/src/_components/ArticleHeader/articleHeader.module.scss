@@ -1,0 +1,132 @@
+@use "../../variables" as v;
+@use "../../mixins" as m;
+
+.articleHeader {
+  max-width: 300px;
+  border-bottom: 1px solid v.$color-border;
+  @include m.respond-to(tablet-up) {
+    max-width: 720px;
+  }
+  @include m.respond-to(desktop-up) {
+    max-width: 960px;
+    gap: 60px;
+  }
+  @include m.respond-to(desktop-large) {
+    max-width: 1280px;
+  }
+  @include m.respond-to(desktop-xl) {
+    max-width: 1440px;
+  }
+
+  &__container {
+    padding-bottom: 30px;
+    width: 100%;
+    display: grid;
+    gap: 15px;
+    @include m.respond-to(tablet-up) {
+      gap: 30px;
+    }
+  }
+
+  &__info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    @include m.respond-to(tablet-up) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__title {
+    font-size: v.$font-size-large-plus;
+    font-weight: v.$font-weight-medium;
+    line-height: v.$line-height-large;
+    @include m.respond-to(desktop-up) {
+      font-size: v.$font-size-x-large-plus;
+      line-height: v.$line-height-x-large;
+    }
+    background: v.$text-gradient;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__image {
+    border-radius: 50%;
+    border: 1px solid v.$color-border;
+    @include m.hover {
+      transition-duration: 0.2s;
+      transform: translateY(-2px);
+      border-color: v.$color-border-hover;
+      box-shadow: v.$shadow-default;
+    }
+  }
+
+  &__text {
+    color: v.$color-text-secondary;
+    font-size: v.$font-size-x-small;
+    font-weight: v.$font-weight-regular;
+    line-height: v.$line-height-xx-small;
+    @include m.respond-to(tablet-up) {
+      font-size: v.$font-size-medium;
+      line-height: v.$line-height-x-small;
+    }
+  }
+
+  &__name {
+    font-weight: v.$font-weight-medium;
+  }
+
+  &__date {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  &__metaIcon {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-color: v.$color-accent-3;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+  }
+
+  &__metaIcon_calendar {
+    mask-image: url(../../_images/calendar-days.svg);
+    -webkit-mask-image: url(../../_images/calendar-days.svg);
+  }
+
+  &__share {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    @include m.respond-to(tablet-up) {
+      border-left: 1px solid v.$color-border;
+      padding-left: 15px;
+    }
+  }
+
+  &__shareText {
+    color: v.$color-text-secondary;
+    font-size: v.$font-size-x-small;
+    font-weight: v.$font-weight-regular;
+    line-height: v.$line-height-xx-small;
+    @include m.respond-to(tablet-up) {
+      font-size: v.$font-size-medium;
+      line-height: v.$line-height-x-small;
+    }
+  }
+}

@@ -2,10 +2,12 @@ import {
   IArticle,
   IArticleCreateResponse,
   IArticleListResponse,
+  IArticleResponse,
   ILastArticleResponse,
 } from "@/_interfaces/interfaces";
 import { createArticle } from "@/_utils/client/articleApi";
 import {
+  getArticle,
   getArticles,
   getCategoryArticles,
   getLastArticles,
@@ -540,6 +542,63 @@ describe("Article Api", () => {
       } as Response);
 
       await expect(getTagArticles(mockSlug, mockPage)).rejects.toThrow(
+        "Internal Server Error",
+      );
+      expect(mockFetch).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe("getArticle", () => {
+    const mockSlug = "test-article";
+
+    it("Ошибка сети при получении статьи", async () => {
+      mockFetch.mockRejectedValueOnce(new Error("Network Error"));
+
+      await expect(getArticle(mockSlug)).rejects.toThrow("Network Error");
+      expect(mockFetch).toHaveBeenCalledTimes(1);
+    });
+
+    it("Успешное получение статьи", async () => {
+      const mockResponse: IArticleResponse = {
+        _id: "article-id",
+        slug: "test-article",
+        title: "Тестовая статья",
+        h1: "Тестовая статья",
+        description: "Описание тестовой статьи",
+        category: "frontend",
+        tags: ["react", "nextjs"],
+        image: "https://example.com/article.jpg",
+        imageAlt: "Тестовая статья",
+        content: "# Тестовая статья\n\nСодержание статьи",
+        status: "published",
+      };
+
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        json: async () => mockResponse,
+      } as Response);
+
+      const data = await getArticle(mockSlug);
+
+      expect(data).toEqual(mockResponse);
+      expect(mockFetch).toHaveBeenCalledTimes(1);
+      expect(mockFetch).toHaveBeenCalledWith(
+        expect.stringContaining("/articles/test-article"),
+        expect.objectContaining({
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        }),
+      );
+    });
+
+    it("Сервер вернул !res.ok", async () => {
+      mockFetch.mockResolvedValueOnce({
+        ok: false,
+        status: 500,
+        json: async () => ({ message: "Internal Server Error" }),
+      } as Response);
+
+      await expect(getArticle(mockSlug)).rejects.toThrow(
         "Internal Server Error",
       );
       expect(mockFetch).toHaveBeenCalledTimes(1);

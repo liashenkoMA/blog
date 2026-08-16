@@ -1,0 +1,72 @@
+@use "../../../../variables" as v;
+@use "../../../../mixins" as m;
+
+.article {
+  max-width: 300px;
+  margin: 0 auto;
+
+  @include m.respond-to(tablet-up) {
+    max-width: 720px;
+  }
+  @include m.respond-to(desktop-up) {
+    max-width: 960px;
+    gap: 60px;
+  }
+  @include m.respond-to(desktop-large) {
+    max-width: 1280px;
+  }
+  @include m.respond-to(desktop-xl) {
+    max-width: 1440px;
+  }
+
+  &__container {
+    padding-top: 30px;
+    display: grid;
+    gap: 30px;
+    @include m.respond-to(desktop-up) {
+      padding-top: 60px;
+      gap: 60px;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+    @include m.respond-to(desktop-up) {
+      flex-direction: row;
+      gap: 60px;
+    }
+  }
+
+  &__image {
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+    border: 1px solid v.$color-border;
+    border-radius: 10px;
+    @include m.respond-to(tablet-up) {
+      height: auto;
+      width: 720px;
+      border-radius: 20px;
+    }
+    @include m.respond-to(desktop-up) {
+      height: 450px;
+      width: 600px;
+    }
+    @include m.respond-to(desktop-large) {
+      width: 920px;
+    }
+    @include m.respond-to(desktop-xl) {
+      width: 1080px;
+    }
+  }
+
+  &__content {
+    display: grid;
+    gap: 10px;
+    @include m.respond-to(tablet-up) {
+      gap: 20px;
+    }
+  }
+}

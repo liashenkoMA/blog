@@ -1,5 +1,6 @@
 import {
   IArticleListResponse,
+  IArticleResponse,
   ILastArticleResponse,
 } from "@/_interfaces/interfaces";
 
@@ -71,4 +72,15 @@ export async function getTagArticles(
   );
 
   return checkResponse<IArticleListResponse>(res);
+}
+
+export async function getArticle(slug: string): Promise<IArticleResponse> {
+  const res = await fetch(`${address.SERVER_API_URL}/articles/${slug}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  return checkResponse<IArticleResponse>(res);
 }
