@@ -52,6 +52,7 @@ $color-text-error: $red;
 $color-text-link: $blue-light; // add
 $color-text-hover: $blue; // add
 $color-text-meta: $grey;
+$color-text-technology: $black;
 
 /* Accent colors */
 
@@ -80,8 +81,10 @@ $font-size-large: 24px;
 $font-size-large-plus: 32px; // add
 $font-size-x-large: 40px;
 $font-size-x-large-plus: 48px; // add
+$font-size-xx-large-minus: 56px;
 $font-size-xx-large: 64px;
 $font-size-huge: 96px; // add
+$font-size-x-huge: 117px; // add
 
 /* Font weight */
 
@@ -106,3 +109,4 @@ $line-height-x-large: 52px;
 $line-height-x-large-plus: 60px; // add
 $line-height-xx-large: 76px;
 $line-height-huge: 108px; // add
+$line-height-x-huge: 122px; // add

@@ -1,0 +1,271 @@
+@use "../../variables" as v;
+@use "../../mixins" as m;
+
+.developer {
+  background-color: v.$color-bg-card;
+
+  &__container {
+    padding-top: 30px;
+    max-width: 300px;
+    margin: 0 auto;
+    display: grid;
+    gap: 30px;
+    @include m.respond-to(tablet-up) {
+      padding-top: 60px;
+      max-width: 720px;
+    }
+    @include m.respond-to(desktop-up) {
+      max-width: 960px;
+      gap: 60px;
+    }
+    @include m.respond-to(desktop-large) {
+      max-width: 1280px;
+    }
+    @include m.respond-to(desktop-xl) {
+      max-width: 1440px;
+    }
+  }
+
+  &__title {
+    font-size: v.$font-size-xx-large-minus;
+    font-weight: v.$font-weight-medium;
+    line-height: v.$line-height-x-large-plus;
+    background: v.$text-gradient;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    @include m.respond-to(tablet-up) {
+      font-size: v.$font-size-xx-large;
+      line-height: v.$line-height-xx-large;
+    }
+    @include m.respond-to(desktop-up) {
+      font-size: v.$font-size-x-huge;
+      line-height: v.$line-height-x-huge;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    @include m.respond-to(desktop-up) {
+      flex-direction: row;
+    }
+  }
+
+  &__profile {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 300px;
+    min-height: 500px;
+    border-radius: 160px 0px;
+    border: 4px solid v.$color-border-hover;
+    box-shadow: v.$shadow-default;
+    @include m.respond-to(desktop-up) {
+      min-height: 480px;
+    }
+  }
+
+  &__avatar {
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid v.$color-border-hover;
+    @include m.hover {
+      cursor: pointer;
+      transition-duration: 0.2s;
+      transform: translateY(-2px);
+      box-shadow: v.$shadow-default;
+    }
+  }
+
+  &__name {
+    padding-top: 16px;
+    color: v.$color-text-main;
+    font-size: v.$font-size-large-plus;
+    font-weight: v.$font-weight-regular;
+    line-height: v.$line-height-large;
+  }
+
+  &__profession {
+    padding-top: 6px;
+    color: v.$color-text-main;
+    font-size: v.$font-size-small;
+    font-weight: v.$font-weight-regular;
+    line-height: v.$line-height-x-small;
+  }
+
+  &__lists {
+    padding-top: 16px;
+    list-style-type: none;
+    display: grid;
+    gap: 16px;
+    min-width: 240px;
+  }
+
+  &__list {
+    font-size: v.$font-size-small;
+    font-weight: v.$font-weight-regular;
+    line-height: v.$line-height-x-small;
+    color: v.$color-text-main;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  &__icon {
+    width: 18px;
+    height: 18px;
+    background-color: v.$color-accent-3;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+
+    &_email {
+      mask-image: url(../../_images/mail.svg);
+      -webkit-mask-image: url(../../_images/mail.svg);
+    }
+
+    &_geo {
+      mask-image: url(../../_images/map-pin.svg);
+      -webkit-mask-image: url(../../_images/map-pin.svg);
+    }
+
+    &_worktime {
+      mask-image: url(../../_images/briefcase-business.svg);
+      -webkit-mask-image: url(../../_images/briefcase-business.svg);
+    }
+
+    &_link {
+      mask-image: url(../../_images/link.svg);
+      -webkit-mask-image: url(../../_images/link.svg);
+    }
+  }
+
+  &__technologies {
+    list-style-type: none;
+    max-width: 240px;
+    padding-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  &__technology {
+    padding: 2px 6px;
+    background-color: v.$color-accent-2;
+    border-radius: 8px;
+    color: v.$color-text-technology;
+    font-size: v.$font-size-x-small;
+    font-weight: v.$font-weight-regular;
+    line-height: v.$line-height-xx-small;
+  }
+
+  &__info {
+    display: grid;
+    gap: 30px;
+  }
+
+  &__htmlTag {
+    color: v.$color-text-link;
+    font-size: v.$font-size-x-small;
+    font-weight: v.$font-weight-regular;
+    line-height: v.$line-height-xx-small;
+  }
+
+  &__text {
+    padding-left: 15px;
+    color: v.$color-text-main;
+    font-weight: v.$font-weight-regular;
+    font-size: v.$font-size-medium;
+    line-height: v.$line-height-small;
+    @include m.respond-to(desktop-up) {
+      font-size: v.$font-size-large;
+      line-height: v.$line-height-medium;
+    }
+    @include m.respond-to(desktop-xl) {
+      font-size: v.$font-size-large-plus;
+      line-height: v.$line-height-large;
+    }
+  }
+
+  &__animatedName {
+    background: v.$text-gradient;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: v.$font-weight-medium;
+    @include m.name-animation;
+  }
+
+  &__animatedName::before {
+    content: "";
+    animation: developername 10s infinite;
+  }
+
+  &__animatedName::after {
+    content: "";
+    border-right: 1px solid v.$white;
+    animation: blink 1s linear infinite;
+  }
+
+  &__contactLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    @include m.respond-to(tablet-up) {
+      justify-content: flex-start;
+    }
+  }
+
+  &__contactLinkText {
+    background: v.$text-gradient;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: v.$font-weight-regular;
+    font-size: v.$font-size-medium;
+    line-height: v.$line-height-small;
+    @include m.respond-to(desktop-up) {
+      font-size: v.$font-size-large;
+      line-height: v.$line-height-medium;
+    }
+    @include m.respond-to(desktop-xl) {
+      font-size: v.$font-size-large-plus;
+      line-height: v.$line-height-large;
+    }
+  }
+
+  &__contactLinkIcon {
+    width: 24px;
+    height: 24px;
+    background-color: v.$color-accent-3;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+    mask-image: url(../../_images/mail.svg);
+    -webkit-mask-image: url(../../_images/mail.svg);
+    @include m.respond-to(desktop-up) {
+      width: 28px;
+      height: 28px;
+    }
+    @include m.hover {
+      cursor: pointer;
+      transition-duration: 0.2s;
+      transform: translateY(-2px);
+      box-shadow: v.$shadow-default;
+      background-color: v.$color-accent-2;
+    }
+  }
+}
