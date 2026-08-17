@@ -6,12 +6,14 @@
 
   &__container {
     padding-top: 30px;
+    padding-bottom: 30px;
     max-width: 300px;
     margin: 0 auto;
     display: grid;
     gap: 30px;
     @include m.respond-to(tablet-up) {
       padding-top: 60px;
+      padding-bottom: 60px;
       max-width: 720px;
     }
     @include m.respond-to(desktop-up) {
@@ -175,9 +177,17 @@
 
   &__htmlTag {
     color: v.$color-text-link;
-    font-size: v.$font-size-x-small;
     font-weight: v.$font-weight-regular;
-    line-height: v.$line-height-xx-small;
+    font-size: v.$font-size-medium;
+    line-height: v.$line-height-small;
+    @include m.respond-to(desktop-up) {
+      font-size: v.$font-size-large;
+      line-height: v.$line-height-medium;
+    }
+    @include m.respond-to(desktop-xl) {
+      font-size: v.$font-size-large-plus;
+      line-height: v.$line-height-large;
+    }
   }
 
   &__text {
@@ -187,6 +197,7 @@
     font-size: v.$font-size-medium;
     line-height: v.$line-height-small;
     @include m.respond-to(desktop-up) {
+      padding-left: 25px;
       font-size: v.$font-size-large;
       line-height: v.$line-height-medium;
     }

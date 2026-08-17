@@ -37,7 +37,7 @@ export default function MainPageHero() {
           />
           <Image
             src={on}
-            width={290}
+            width={300}
             height={320}
             alt="Основное фото"
             className={`${styles.mainPageHero__image} ${styles.mainPageHero__image_position_on}`}

@@ -1,0 +1,151 @@
+@use "../../variables" as v;
+@use "../../mixins" as m;
+
+.profile {
+  margin: 0 auto;
+  max-width: 300px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  @include m.respond-to(tablet-up) {
+    max-width: 720px;
+  }
+  @include m.respond-to(desktop-up) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    max-width: 960px;
+  }
+  @include m.respond-to(desktop-large) {
+    max-width: 1280px;
+  }
+  @include m.respond-to(desktop-xl) {
+    max-width: 1440px;
+  }
+
+  &__content {
+    padding: 30px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    border: 1px solid v.$color-border;
+    background-color: v.$color-bg-element;
+    border-radius: 30px;
+    @include m.respond-to(tablet-up) {
+      align-items: center;
+      padding: 30px;
+    }
+    @include m.respond-to(desktop-large) {
+      flex-direction: row;
+      gap: 60px;
+    }
+    @include m.respond-to(desktop-xl) {
+      flex-direction: row;
+      gap: 60px;
+    }
+  }
+
+  &__about {
+    display: grid;
+    gap: 30px;
+    @include m.respond-to(tablet-up) {
+      gap: 60px;
+    }
+  }
+
+  &__title {
+    width: 224px;
+    height: 68px;
+    border: 4px solid v.$color-border-hover;
+    border-radius: 40px 0px;
+    color: v.$color-text-main;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: v.$font-size-large-plus;
+    font-weight: v.$font-weight-medium;
+    line-height: v.$line-height-large;
+    @include m.respond-to(tablet-up) {
+      width: 300px;
+      height: 84px;
+    }
+  }
+
+  &__description {
+    border: 1px solid v.$color-border;
+    border-radius: 40px;
+    padding: 24px 10px;
+    background-color: v.$color-bg-page;
+    @include m.respond-to(tablet-up) {
+      padding: 24px 40px;
+    }
+  }
+
+  &__htmlTag {
+    color: v.$color-text-link;
+    font-weight: v.$font-weight-regular;
+    font-size: v.$font-size-medium;
+    line-height: v.$line-height-small;
+    @include m.respond-to(desktop-up) {
+      font-size: v.$font-size-large;
+      line-height: v.$line-height-medium;
+    }
+    @include m.respond-to(desktop-xl) {
+      font-size: v.$font-size-large-plus;
+      line-height: v.$line-height-large;
+    }
+  }
+
+  &__textContent {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  &__text {
+    padding-left: 15px;
+    color: v.$color-text-main;
+    font-weight: v.$font-weight-regular;
+    font-size: v.$font-size-medium;
+    line-height: v.$line-height-small;
+    @include m.respond-to(desktop-up) {
+      padding-left: 25px;
+      font-size: v.$font-size-large;
+      line-height: v.$line-height-medium;
+    }
+    @include m.respond-to(desktop-xl) {
+      font-size: v.$font-size-large-plus;
+      line-height: v.$line-height-large;
+    }
+  }
+
+  &__highlight {
+    background: v.$text-gradient;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: v.$font-weight-medium;
+  }
+
+  &__image {
+    object-fit: cover;
+    border-radius: 16px;
+    border: 1px solid v.$color-border;
+    @include m.hover {
+      cursor: pointer;
+      transition-duration: 0.2s;
+      border-color: v.$color-border-hover;
+      transform: translateY(-2px);
+      box-shadow: v.$shadow-default;
+    }
+    @include m.respond-to(tablet-up) {
+      width: 320px;
+      height: 380px;
+    }
+    @include m.respond-to(desktop-up) {
+      width: 462px;
+      height: 638px;
+    }
+    @include m.respond-to(desktop-large) {
+      margin-top: 144px;
+    }
+  }
+}
