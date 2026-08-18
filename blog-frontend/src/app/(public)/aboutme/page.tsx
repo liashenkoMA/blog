@@ -3,6 +3,7 @@ import styles from "./aboutme.module.scss";
 import { getUser } from "@/_utils/server/userApi";
 import Profile from "@/_components/Profile/Profile";
 import Skills from "@/_components/Skills/Skills";
+import ButtonUp from "@/_components/ButtonUp/ButtonUp";
 
 export default async function Page() {
   const user = await getUser();
@@ -12,6 +13,7 @@ export default async function Page() {
       <Developer user={user} />
       <Profile user={user} />
       <Skills />
+      <ButtonUp />
     </main>
   );
 }
