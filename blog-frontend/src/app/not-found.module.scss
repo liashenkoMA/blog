@@ -1,0 +1,88 @@
+@use "../variables" as v;
+@use "../mixins" as m;
+
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background-color: v.$color-bg-page;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  max-width: 300px;
+  @include m.respond-to(tablet-up) {
+    max-width: 720px;
+  }
+  @include m.respond-to(desktop) {
+    max-width: 960px;
+  }
+  @include m.respond-to(desktop-large) {
+    max-width: 1280px;
+  }
+}
+
+.notfound {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  @include m.respond-to(tablet-up) {
+    flex-direction: row;
+    gap: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    max-width: 300px;
+    @include m.respond-to(tablet-up) {
+      gap: 30px;
+    }
+  }
+
+  &__text {
+    color: v.$color-text-secondary;
+    font-size: v.$font-size-small;
+    font-weight: v.$font-weight-regular;
+    line-height: v.$line-height-small;
+    @include m.respond-to(tablet-up) {
+      font-size: v.$font-size-medium;
+      line-height: v.$line-height-medium;
+    }
+  }
+
+  &__errorcode {
+    font-size: v.$font-size-xx-large-minus;
+    font-weight: v.$font-weight-medium;
+    line-height: v.$line-height-x-large-plus;
+    @include m.respond-to(tablet-up) {
+      font-size: v.$font-size-xx-large;
+      line-height: v.$line-height-xx-large;
+    }
+    @include m.respond-to(desktop-up) {
+      font-size: v.$font-size-x-huge;
+      line-height: v.$line-height-x-huge;
+    }
+    background: v.$gradient-primary;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__header {
+    color: v.$color-text-main;
+    font-size: v.$font-size-large;
+    font-weight: v.$font-weight-regular;
+    line-height: v.$line-height-large;
+    @include m.respond-to(tablet-up) {
+      font-size: v.$font-size-x-large;
+      line-height: v.$line-height-large;
+    }
+  }
+}
