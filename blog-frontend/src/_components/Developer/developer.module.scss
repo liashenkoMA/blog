@@ -184,10 +184,6 @@
       font-size: v.$font-size-large;
       line-height: v.$line-height-medium;
     }
-    @include m.respond-to(desktop-xl) {
-      font-size: v.$font-size-large-plus;
-      line-height: v.$line-height-large;
-    }
   }
 
   &__text {
@@ -200,10 +196,6 @@
       padding-left: 25px;
       font-size: v.$font-size-large;
       line-height: v.$line-height-medium;
-    }
-    @include m.respond-to(desktop-xl) {
-      font-size: v.$font-size-large-plus;
-      line-height: v.$line-height-large;
     }
   }
 
@@ -242,16 +234,12 @@
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-weight: v.$font-weight-regular;
+    font-weight: v.$font-weight-medium;
     font-size: v.$font-size-medium;
     line-height: v.$line-height-small;
     @include m.respond-to(desktop-up) {
       font-size: v.$font-size-large;
       line-height: v.$line-height-medium;
-    }
-    @include m.respond-to(desktop-xl) {
-      font-size: v.$font-size-large-plus;
-      line-height: v.$line-height-large;
     }
   }
 

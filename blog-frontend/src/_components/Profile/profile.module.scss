@@ -4,13 +4,13 @@
 .profile {
   margin: 0 auto;
   max-width: 300px;
-  padding-top: 30px;
+  padding-top: 60px;
   padding-bottom: 30px;
   @include m.respond-to(tablet-up) {
     max-width: 720px;
   }
   @include m.respond-to(desktop-up) {
-    padding-top: 60px;
+    padding-top: 120px;
     padding-bottom: 60px;
     max-width: 960px;
   }
@@ -37,10 +37,6 @@
       flex-direction: row;
       gap: 60px;
     }
-    @include m.respond-to(desktop-xl) {
-      flex-direction: row;
-      gap: 60px;
-    }
   }
 
   &__about {
@@ -52,6 +48,7 @@
   }
 
   &__title {
+    margin: 0px auto;
     width: 224px;
     height: 68px;
     border: 4px solid v.$color-border-hover;
@@ -66,6 +63,7 @@
     @include m.respond-to(tablet-up) {
       width: 300px;
       height: 84px;
+      margin: 0;
     }
   }
 
@@ -88,10 +86,6 @@
       font-size: v.$font-size-large;
       line-height: v.$line-height-medium;
     }
-    @include m.respond-to(desktop-xl) {
-      font-size: v.$font-size-large-plus;
-      line-height: v.$line-height-large;
-    }
   }
 
   &__textContent {
@@ -110,10 +104,6 @@
       padding-left: 25px;
       font-size: v.$font-size-large;
       line-height: v.$line-height-medium;
-    }
-    @include m.respond-to(desktop-xl) {
-      font-size: v.$font-size-large-plus;
-      line-height: v.$line-height-large;
     }
   }
 
@@ -146,6 +136,9 @@
     }
     @include m.respond-to(desktop-large) {
       margin-top: 144px;
+    }
+    @include m.respond-to(desktop-xl) {
+      height: 526px;
     }
   }
 }

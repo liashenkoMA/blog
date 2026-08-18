@@ -44,7 +44,6 @@ export default async function Profile({ user }: { user: IUser }) {
           className={styles.profile__image}
           width={278}
           height={300}
-          unoptimized // TODO: убрать после верстки
         />
       </div>
     </section>
