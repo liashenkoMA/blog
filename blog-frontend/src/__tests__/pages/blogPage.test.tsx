@@ -34,7 +34,9 @@ describe("Blog Page", () => {
       mySite: "https://example.com",
     });
 
-    await Page({ searchParams: { page: String(mockPage) } });
+    await Page({
+      searchParams: { page: String(mockPage) },
+    });
 
     expect(getArticles).toHaveBeenCalledTimes(1);
     expect(getArticles).toHaveBeenCalledWith(mockPage);

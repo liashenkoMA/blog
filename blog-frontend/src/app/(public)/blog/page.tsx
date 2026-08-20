@@ -4,6 +4,7 @@ import Sidebar from "@/_components/Sidebar/Sidebar";
 import { getUser } from "@/_utils/server/userApi";
 import { getArticles } from "@/_utils/server/articleApi";
 import ArticleCard from "@/_components/ArticleCard/ArticleCard";
+import Pagination from "@/_components/Pagination/Pagination";
 
 interface ISearchParams {
   searchParams?: { page?: string };
@@ -26,6 +27,7 @@ export default async function Page({ searchParams }: ISearchParams) {
           {articles.articles.map((article) => (
             <ArticleCard key={article._id} article={article} />
           ))}
+          <Pagination totalCount={articles.totalCount} slug="/blog" />
         </div>
         <Sidebar />
       </div>
