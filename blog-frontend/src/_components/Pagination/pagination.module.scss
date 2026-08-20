@@ -1,0 +1,78 @@
+@use "../../variables" as v;
+@use "../../mixins" as m;
+
+.pagination {
+  margin: 0 auto;
+  &__lists {
+    list-style: none;
+    display: flex;
+    gap: 5px;
+  }
+
+  &__list {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__button {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    border: 1px solid v.$color-border;
+    background-color: v.$color-bg-element;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: v.$color-text-meta;
+    font-size: v.$font-size-small;
+    font-weight: v.$font-weight-regular;
+    line-height: v.$line-height-x-small;
+    @include m.hover {
+      cursor: pointer;
+      transition-duration: 0.2s;
+      transform: translateY(-2px);
+      box-shadow: v.$shadow-default;
+      border-color: v.$color-border-hover;
+      color: v.$color-text-hover;
+    }
+    @include m.respond-to(desktop-up) {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+    background-color: currentColor;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+
+    &_left {
+      mask-image: url(../../_images/arrow-left.svg);
+      -webkit-mask-image: url(../../_images/arrow-left.svg);
+    }
+
+    &_right {
+      mask-image: url(../../_images/arrow-right.svg);
+      -webkit-mask-image: url(../../_images/arrow-right.svg);
+    }
+  }
+
+  &__button_type_active {
+    border-color: v.$color-border-hover;
+    box-shadow: v.$shadow-default;
+    color: v.$color-text-hover;
+  }
+
+  &__text {
+    color: v.$color-text-meta;
+    font-size: v.$font-size-small;
+    font-weight: v.$font-weight-regular;
+    line-height: v.$line-height-x-small;
+  }
+}

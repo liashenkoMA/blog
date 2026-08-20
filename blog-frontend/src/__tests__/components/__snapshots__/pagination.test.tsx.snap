@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Pagination Component Snapshot 1`] = `
+<div>
+  <nav
+    class="pagination"
+  >
+    <ul
+      class="pagination__lists"
+    >
+      <li
+        class="pagination__list"
+      >
+        <button
+          aria-label="Предыдущая страница"
+          class="pagination__button"
+          disabled=""
+          type="button"
+        >
+          <span
+            class="pagination__icon pagination__icon_left"
+          />
+        </button>
+      </li>
+      <li
+        class="pagination__list"
+      >
+        <a
+          class="pagination__button pagination__button_type_active"
+          href="/articles"
+        >
+          1
+        </a>
+      </li>
+      <li
+        class="pagination__list"
+      >
+        <a
+          class="pagination__button "
+          href="/articles?page=2"
+        >
+          2
+        </a>
+      </li>
+      <li
+        class="pagination__list"
+      >
+        <a
+          class="pagination__button "
+          href="/articles?page=3"
+        >
+          3
+        </a>
+      </li>
+      <li
+        class="pagination__list"
+      >
+        <a
+          class="pagination__button "
+          href="/articles?page=4"
+        >
+          4
+        </a>
+      </li>
+      <li
+        class="pagination__list"
+      >
+        <a
+          class="pagination__button "
+          href="/articles?page=5"
+        >
+          5
+        </a>
+      </li>
+      <li
+        class="pagination__list"
+      >
+        <a
+          aria-label="Следующая страница"
+          class="pagination__button"
+          href="/articles?page=2"
+        >
+          <span
+            class="pagination__icon pagination__icon_right"
+          />
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;

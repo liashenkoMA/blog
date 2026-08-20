@@ -6,7 +6,7 @@ describe("ButtonUp", () => {
     window.scrollTo = jest.fn();
   });
 
-  it("изначально скрыта", () => {
+  it("Изначально скрыта", () => {
     render(<ButtonUp />);
 
     expect(screen.getByRole("button")).toHaveClass(
@@ -14,7 +14,7 @@ describe("ButtonUp", () => {
     );
   });
 
-  it("показывается после скролла", () => {
+  it("Показывается после скролла", () => {
     render(<ButtonUp />);
 
     Object.defineProperty(window, "scrollY", {
@@ -29,7 +29,7 @@ describe("ButtonUp", () => {
     );
   });
 
-  it("при клике прокручивает страницу наверх", () => {
+  it("При клике прокручивает страницу наверх", () => {
     render(<ButtonUp />);
 
     fireEvent.click(screen.getByRole("button"));

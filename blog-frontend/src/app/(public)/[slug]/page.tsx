@@ -10,6 +10,7 @@ import {
 import { getCategory } from "@/_utils/server/categoryApi";
 import { getTag } from "@/_utils/server/tagApi";
 import { notFound } from "next/navigation";
+import Pagination from "@/_components/Pagination/Pagination";
 
 async function loadCategoryOrTag(slug: string): Promise<{
   type: "category" | "tag";
@@ -72,6 +73,7 @@ export default async function Page({ params, searchParams }: IPageProps) {
           {articlePage.articles.map((art) => (
             <ArticleCard key={art._id} article={art} />
           ))}
+          <Pagination totalCount={articlePage.totalCount} slug={awaitedParams.slug} />
         </div>
         <Sidebar />
       </div>
