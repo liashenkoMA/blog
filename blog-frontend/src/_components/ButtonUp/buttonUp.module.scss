@@ -8,11 +8,12 @@
     position: fixed;
     right: 40px;
     bottom: 40px;
-    background: url(../../_images/Arrow_Up_LG.svg) no-repeat center;
-    background-size: 30px 30px;
     background-color: v.$color-bg-element;
     border: 1px solid v.$color-border;
     border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     @include m.hover {
       transform: translateY(-2px);
       transition-duration: 0.2s;
@@ -24,5 +25,20 @@
     &_type_hide {
       display: none;
     }
+  }
+
+  &__icon {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-color: v.$color-text-heading;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+    mask-image: url(../../_images/Arrow_Up_LG.svg);
+    -webkit-mask-image: url(../../_images/Arrow_Up_LG.svg);
   }
 }

@@ -1,6 +1,7 @@
 import styles from "./publicLayout.module.scss";
 import Header from "@/_components/Header/Header";
 import Footer from "@/_components/Footer/Footer";
+import ButtonUp from "@/_components/ButtonUp/ButtonUp";
 
 export default function PublicLayout({
   children,
@@ -12,6 +13,7 @@ export default function PublicLayout({
       <Header />
       {children}
       <Footer />
+      <ButtonUp />
     </div>
   );
 }

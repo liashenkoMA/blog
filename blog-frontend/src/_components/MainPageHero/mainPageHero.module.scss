@@ -32,16 +32,20 @@
   }
 
   &__profile {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     @include m.respond-to(desktop-up) {
       max-width: 700px;
-      display: flex;
-      flex-direction: column;
       gap: 20px;
+    }
+    @include m.respond-to(desktop-large) {
+      gap: 30px;
     }
   }
 
   &__text {
-    color: v.$color-text-main;
+    color: v.$color-text-heading;
     font-size: v.$font-size-medium;
     font-weight: v.$font-weight-regular;
     line-height: v.$line-height-small;

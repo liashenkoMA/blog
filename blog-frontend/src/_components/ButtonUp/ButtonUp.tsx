@@ -32,6 +32,8 @@ export default function ButtonUp() {
       type="button"
       className={`${styles.buttonUp__button} ${hide ? styles.buttonUp__button_type_hide : ""}`}
       onClick={handleSkrollToTop}
-    ></button>
+    >
+      <span className={styles.buttonUp__icon} />
+    </button>
   );
 }

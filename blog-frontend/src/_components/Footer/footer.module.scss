@@ -38,10 +38,10 @@
   }
 
   &__copyright {
-    color: v.$color-text-main;
-    font-size: v.$font-size-small;
+    color: v.$color-text-heading;
     font-weight: v.$font-weight-regular;
-    line-height: v.$line-height-x-small;
+    font-size: v.$font-size-medium;
+    line-height: v.$line-height-small;
 
     &_type_colored {
       color: v.$color-accent-2;

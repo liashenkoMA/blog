@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "jest --updateSnapshot"
+    "test": "jest"
   },
   "dependencies": {
     "@milkdown/crepe": "^7.22.0",
