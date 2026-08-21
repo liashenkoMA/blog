@@ -1,0 +1,61 @@
+@use "../../variables" as v;
+@use "../../mixins" as m;
+
+.socials {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  @include m.respond-to(desktop-up) {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  &__item {
+    list-style-type: none;
+  }
+
+  &__link {
+    color: v.$color-text-main;
+    font-weight: v.$font-weight-regular;
+    font-size: v.$font-size-medium;
+    line-height: v.$line-height-small;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    @include m.hover {
+      cursor: pointer;
+      transition-duration: 0.2s;
+      transform: translateY(-2px);
+      color: v.$color-text-hover;
+    }
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    background-color: v.$color-text-link;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+
+    &_telegram {
+      mask-image: url(../../_images/social-telegram.svg);
+      -webkit-mask-image: url(../../_images/social-telegram.svg);
+    }
+    &_vk {
+      mask-image: url(../../_images/social-vkontakte.svg);
+      -webkit-mask-image: url(../../_images/social-vkontakte.svg);
+    }
+    &_github {
+      mask-image: url(../../_images/social-github.svg);
+      -webkit-mask-image: url(../../_images/social-github.svg);
+    }
+    &_linkedin {
+      mask-image: url(../../_images/social-linkedin.svg);
+      -webkit-mask-image: url(../../_images/social-linkedin.svg);
+    }
+  }
+}

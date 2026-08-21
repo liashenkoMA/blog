@@ -34,26 +34,29 @@
   &__profile {
     @include m.respond-to(desktop-up) {
       max-width: 700px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
   }
 
   &__text {
-    color: v.$color-text-secondary;
+    color: v.$color-text-main;
     font-size: v.$font-size-medium;
     font-weight: v.$font-weight-regular;
     line-height: v.$line-height-small;
     @include m.respond-to(tablet-up) {
       font-size: v.$font-size-large;
-      line-height: v.$line-height-medium-plus;
+      line-height: v.$line-height-small;
     }
   }
 
   &__text_greeting {
     font-weight: v.$font-weight-medium;
+    color: v.$color-text-secondary;
   }
 
   &__title {
-    padding: 10px 0px 20px;
     color: v.$color-text-main;
     font-size: v.$font-size-x-large;
     font-weight: v.$font-weight-medium;

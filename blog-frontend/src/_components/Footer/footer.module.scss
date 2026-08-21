@@ -3,8 +3,13 @@
 
 .footer {
   width: 100%;
+  margin-top: 60px;
+  @include m.respond-to(tablet-up) {
+    margin-top: 120px;
+  }
 
   &__content {
+    padding: 30px 0px;
     margin: 0 auto;
     max-width: 300px;
     min-height: 60px;
@@ -13,7 +18,9 @@
     align-items: center;
     justify-content: center;
     border-top: 1px solid v.$color-border;
+    gap: 10px;
     @include m.respond-to(tablet-up) {
+      padding: 0;
       max-width: 720px;
       flex-direction: row;
       justify-content: space-between;

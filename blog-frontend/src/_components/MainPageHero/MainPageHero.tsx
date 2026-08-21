@@ -2,6 +2,7 @@ import styles from "./mainPageHero.module.scss";
 import on from "../../_images/on.jpg";
 import under from "../../_images/under.jpg";
 import Image from "next/image";
+import Socials from "../Socials/Socials";
 
 export default function MainPageHero() {
   return (
@@ -26,6 +27,7 @@ export default function MainPageHero() {
             идеи, какие технологии использовал и с какими трудностями
             сталкивался.
           </p>
+          <Socials />
         </div>
         <div className={styles.mainPageHero__images}>
           <Image

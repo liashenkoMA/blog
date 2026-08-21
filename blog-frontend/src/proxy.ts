@@ -1,7 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
-const protectedRoutes = ["/dashboard"];
+const protectedRoutes = [
+  "/dashboard",
+  "/dashboard/article",
+  "/dashboard/tag",
+  "/dashboard/category",
+  "/dashboard/gallery",
+  "/dashboard/profile",
+];
 
 export default async function proxy(request: NextRequest) {
   const path = request.nextUrl.pathname;

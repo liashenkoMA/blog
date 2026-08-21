@@ -1,3 +1,4 @@
+import Socials from "../Socials/Socials";
 import style from "./footer.module.scss";
 
 export default function Footer() {
@@ -11,6 +12,7 @@ export default function Footer() {
             LyashenkoMA
           </span>
         </p>
+        <Socials />
       </div>
     </footer>
   );

@@ -7,8 +7,9 @@
     margin: 0 auto;
     max-width: 300px;
     min-height: 60px;
-    display: grid;
+    display: flex;
     align-items: center;
+    justify-content: space-between;
     @include m.respond-to(tablet-up) {
       max-width: 720px;
     }
