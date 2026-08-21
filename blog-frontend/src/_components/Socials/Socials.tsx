@@ -12,7 +12,7 @@ export default async function Socials() {
           <span
             className={`${styles.socials__icon} ${styles.socials__icon_telegram}`}
           />
-          Telegram
+        
         </Link>
       </li>
       <li className={styles.socials__item}>
@@ -20,7 +20,7 @@ export default async function Socials() {
           <span
             className={`${styles.socials__icon} ${styles.socials__icon_vk}`}
           />
-          Вконтакте
+  
         </Link>
       </li>
       <li className={styles.socials__item}>
@@ -28,7 +28,7 @@ export default async function Socials() {
           <span
             className={`${styles.socials__icon} ${styles.socials__icon_github}`}
           />
-          GitHub
+
         </Link>
       </li>
     </ul>

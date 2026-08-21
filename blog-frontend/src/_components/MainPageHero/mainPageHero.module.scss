@@ -3,9 +3,12 @@
 
 .mainPageHero {
   padding-top: 64px;
-  padding-bottom: 10px;
+  padding-bottom: 64px;
   background-color: v.$color-bg-element;
   @include m.respond-to(desktop-up) {
+    padding-top: 64px;
+  }
+  @include m.respond-to(desktop-xl) {
     padding-top: 128px;
   }
 
@@ -92,6 +95,15 @@
       content: "";
       border-right: 1px solid var(--caret);
       animation: blink 1s linear infinite;
+    }
+  }
+
+  &__socials {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    @include m.respond-to(desktop-up) {
+      justify-content: flex-start;
     }
   }
 

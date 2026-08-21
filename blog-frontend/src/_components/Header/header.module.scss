@@ -1,4 +1,3 @@
-@use "../../variables" as v;
 @use "../../mixins" as m;
 
 .header {
@@ -22,6 +21,13 @@
     }
     @include m.respond-to(desktop-xl) {
       max-width: 1440px;
+    }
+  }
+
+  &__socials {
+    display: none;
+    @include m.respond-to(desktop-up) {
+      display: block;
     }
   }
 }

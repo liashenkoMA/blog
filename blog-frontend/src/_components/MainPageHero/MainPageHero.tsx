@@ -27,7 +27,9 @@ export default function MainPageHero() {
             идеи, какие технологии использовал и с какими трудностями
             сталкивался.
           </p>
-          <Socials />
+          <div className={styles.mainPageHero__socials}>
+            <Socials />
+          </div>
         </div>
         <div className={styles.mainPageHero__images}>
           <Image

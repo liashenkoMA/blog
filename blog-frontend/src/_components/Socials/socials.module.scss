@@ -3,10 +3,8 @@
 
 .socials {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  gap: 30px;
   @include m.respond-to(desktop-up) {
-    flex-direction: row;
     gap: 20px;
   }
 
@@ -31,8 +29,8 @@
   }
 
   &__icon {
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     background-color: currentColor;
     mask-repeat: no-repeat;
     mask-position: center;
