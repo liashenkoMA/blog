@@ -49,7 +49,7 @@
     font-size: v.$font-size-medium;
     font-weight: v.$font-weight-light;
     line-height: v.$line-height-x-small;
-    color: v.$color-text-secondary;
+    color: v.$color-text-main;
     @include m.hover {
       cursor: pointer;
       transition-duration: 0.2s;
@@ -81,18 +81,18 @@
   }
 
   &__description {
-    color: v.$color-text-secondary;
+    color: v.$color-text-main;
     font-size: v.$font-size-medium;
     font-weight: v.$font-weight-regular;
-    line-height: v.$line-height-small;
+    line-height: v.$line-height-medium;
     line-clamp: 6;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 6;
     overflow: hidden;
     @include m.respond-to(desktop-up) {
-      line-clamp: 5;
-      -webkit-line-clamp: 5;
+      line-clamp: 4;
+      -webkit-line-clamp: 4;
     }
   }
 

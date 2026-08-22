@@ -13,7 +13,7 @@ export default async function MainPageLastArticles() {
         <div className={styles.mainPageLastArticles__header}>
           <h2 className={styles.mainPageLastArticles__title}>Новые статьи</h2>
           <p className={styles.mainPageLastArticles__text}>
-            Последние статьи моего блога!
+            Всё новое, что я изучаю, пробую и создаю.
           </p>
         </div>
         <div className={styles.mainPageLastArticles__content}>

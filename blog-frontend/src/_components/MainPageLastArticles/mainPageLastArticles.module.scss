@@ -49,11 +49,10 @@
   &__text {
     font-size: v.$font-size-medium;
     font-weight: v.$font-weight-regular;
-    line-height: v.$line-height-x-small;
-    color: v.$color-text-secondary;
+    line-height: v.$line-height-medium;
+    color: v.$color-text-main;
     @include m.respond-to(tablet-up) {
       font-size: v.$font-size-large;
-      line-height: v.$line-height-medium;
     }
   }
 
@@ -61,23 +60,21 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 30px;
-    @include m.respond-to(desktop-up) {
+    gap: 60px;
+    @include m.respond-to(desktop-large) {
       flex-direction: row;
-      gap: 60px;
     }
   }
 
   &__lists {
     display: grid;
-    gap: 30px;
+    gap: 60px;
     @include m.respond-to(tablet-up) {
       grid-template-columns: repeat(2, 300px);
       justify-content: space-between;
     }
     @include m.respond-to(desktop-up) {
       grid-template-columns: 1fr;
-      gap: 60px;
     }
   }
 }

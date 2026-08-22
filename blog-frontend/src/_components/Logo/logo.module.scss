@@ -14,11 +14,11 @@
   }
 
   &__text {
-    color: v.$color-text-main;
-    font-size: v.$font-size-medium;
+    color: v.$color-text-secondary;
+    font-size: v.$font-size-large;
     font-weight: v.$font-weight-regular;
     line-height: v.$line-height-medium;
-    @include m.respond-to(tablet-up) {
+    @include m.respond-to(desktop-up) {
       font-size: v.$font-size-large-plus;
       line-height: v.$line-height-large;
     }

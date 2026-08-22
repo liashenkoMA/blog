@@ -71,7 +71,7 @@
   }
 
   &__text {
-    color: v.$color-text-secondary;
+    color: v.$color-text-main;
     font-size: v.$font-size-x-small;
     font-weight: v.$font-weight-regular;
     line-height: v.$line-height-xx-small;
@@ -88,6 +88,11 @@
   &__date {
     display: flex;
     align-items: center;
+    gap: 3px;
+  }
+
+  &__meta {
+    display: grid;
     gap: 3px;
   }
 
@@ -120,7 +125,7 @@
   }
 
   &__shareText {
-    color: v.$color-text-secondary;
+    color: v.$color-text-main;
     font-size: v.$font-size-x-small;
     font-weight: v.$font-weight-regular;
     line-height: v.$line-height-xx-small;

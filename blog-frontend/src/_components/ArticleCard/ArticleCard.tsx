@@ -44,7 +44,7 @@ export default function ArticleCard({
             href={`${article.category.slug}/${article.slug}`}
             className={styles.articleCard__title_link}
           >
-            {article.title}
+            {article.h1}
           </Link>
         </h2>
 

@@ -86,7 +86,10 @@
 
   &__name {
     padding-top: 16px;
-    color: v.$color-text-main;
+    background: v.$text-gradient;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-size: v.$font-size-large-plus;
     font-weight: v.$font-weight-regular;
     line-height: v.$line-height-large;
@@ -96,7 +99,7 @@
     padding-top: 6px;
     color: v.$color-text-main;
     font-size: v.$font-size-small;
-    font-weight: v.$font-weight-regular;
+    font-weight: v.$font-weight-light;
     line-height: v.$line-height-x-small;
   }
 
@@ -128,6 +131,12 @@
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-position: center;
     -webkit-mask-size: contain;
+    @include m.hover {
+      cursor: pointer;
+      transition-duration: 0.2s;
+      transform: translateY(-2px);
+      background-color: v.$color-accent-2;
+    }
 
     &_email {
       mask-image: url(../../_images/mail.svg);
@@ -189,13 +198,13 @@
   &__text {
     padding-left: 15px;
     color: v.$color-text-main;
-    font-weight: v.$font-weight-regular;
     font-size: v.$font-size-medium;
+    font-weight: v.$font-weight-regular;
     line-height: v.$line-height-small;
     @include m.respond-to(desktop-up) {
       padding-left: 25px;
       font-size: v.$font-size-large;
-      line-height: v.$line-height-medium;
+      line-height: v.$line-height-medium-plus;
     }
   }
 
@@ -263,7 +272,6 @@
       cursor: pointer;
       transition-duration: 0.2s;
       transform: translateY(-2px);
-      box-shadow: v.$shadow-default;
       background-color: v.$color-accent-2;
     }
   }

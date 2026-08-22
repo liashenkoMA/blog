@@ -12,20 +12,20 @@ export default function MainPageHero() {
           <p
             className={`${styles.mainPageHero__text} ${styles.mainPageHero__text_greeting}`}
           >
-            Hello Everyone!
+            Всем привет!
           </p>
           <h1 className={styles.mainPageHero__title}>
-            I`m
+            Я —
             <br />
             <span
               className={`${styles.mainPageHero__title} ${styles.mainPageHero__title_type_colored}`}
             ></span>
           </h1>
           <p className={styles.mainPageHero__text}>
-            Этот блог я создал в рамках работы над пет-проектами — в будущем,
-            возможно, буду делиться статьями о том, как реализовывал различные
-            идеи, какие технологии использовал и с какими трудностями
-            сталкивался.
+            Начинающий full-stack разработчик, который постоянно что-то
+            придумывает, пишет и успешно ломает. Здесь буду сохранять свои
+            заметки, идеи, решения и наблюдения — и просто вести дневник своего
+            пути в веб-разработке.
           </p>
           <div className={styles.mainPageHero__socials}>
             <Socials />

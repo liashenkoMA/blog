@@ -80,10 +80,9 @@ export default function Developer({ user }: { user: IUser }) {
             <div className={styles.developer__description}>
               <span className={styles.developer__htmlTag}>&lt;p&gt;</span>
               <p className={styles.developer__text}>
-                Этот блог я создал в рамках работы над пет-проектами — в
-                будущем, возможно, буду делиться статьями о том, как
-                реализовывал различные идеи, какие технологии использовал и с
-                какими трудностями сталкивался.
+                Этот блог я создал в рамках работы над пет-проектами. Здесь буду
+                сохранять свои заметки, идеи, решения и наблюдения — и просто
+                вести дневник своего пути в веб-разработке.
               </p>
               <span className={styles.developer__htmlTag}>&lt;/p&gt;</span>
             </div>

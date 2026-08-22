@@ -13,7 +13,7 @@
   }
 
   &__link {
-    color: v.$color-text-heading;
+    color: v.$color-text-secondary;
     font-weight: v.$font-weight-regular;
     font-size: v.$font-size-medium;
     line-height: v.$line-height-small;
@@ -29,8 +29,8 @@
   }
 
   &__icon {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     background-color: currentColor;
     mask-repeat: no-repeat;
     mask-position: center;

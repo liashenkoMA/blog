@@ -10,12 +10,12 @@ export default async function Sidebar() {
 
   return (
     <aside className={styles.sidebar}>
-      <SidebarList title={"Categories"}>
+      <SidebarList title={"Категории"}>
         {categories.map((cat) => (
           <SidebarComponentCategory key={cat._id} category={cat} />
         ))}
       </SidebarList>
-      <SidebarList title={"Tags"}>
+      <SidebarList title={"Тэги"}>
         {tags.map((tag) => (
           <SidebarComponentTag key={tag._id} tag={tag} />
         ))}

@@ -19,7 +19,7 @@ export default function PageHeader({ url, alt, title }: IPageHeaderProps) {
           className={styles.pageHeader__image}
         />
         <div className={styles.pageHeader__content}>
-          <p className={styles.pageHeader__text}>Hello Everyone!</p>
+          <p className={styles.pageHeader__text}>Всем привет!</p>
           <h1 className={styles.pageHeader__title}>{title}</h1>
         </div>
       </div>

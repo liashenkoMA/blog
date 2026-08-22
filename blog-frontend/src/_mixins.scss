@@ -38,162 +38,74 @@
 
 @mixin text-writer-home {
   @keyframes typing {
-    // Creator
     0%,
-    26% {
-      content: "";
-    }
-
-    1%,
-    25% {
-      content: "C";
-    }
-
-    2%,
-    24% {
-      content: "Cr";
-    }
-
-    3%,
-    23% {
-      content: "Cre";
-    }
-
-    4%,
-    22% {
-      content: "Crea";
-    }
-
-    5%,
-    21% {
-      content: "Creat";
-    }
-
-    6%,
-    20% {
-      content: "Creato";
-    }
-
-    7%,
-    19% {
-      content: "Creator";
-    }
-
-    // Gamer
-    28%,
-    50% {
-      content: "";
-    }
-
-    29%,
-    49% {
-      content: "G";
-    }
-
-    30%,
-    48% {
-      content: "Ga";
-    }
-
-    31%,
-    47% {
-      content: "Gam";
-    }
-
-    32%,
-    46% {
-      content: "Game";
-    }
-
-    33%,
-    45% {
-      content: "Gamer";
-    }
-
-    // Maksim Lyashenko
-    52%,
     96% {
       content: "";
     }
 
-    53%,
+    1%,
     95% {
-      content: "M";
+      content: "М";
     }
 
-    54%,
+    2%,
     94% {
-      content: "Ma";
+      content: "Ма";
     }
 
-    55%,
+    3%,
     93% {
-      content: "Mak";
+      content: "Мак";
     }
 
-    56%,
+    4%,
     92% {
-      content: "Maks";
+      content: "Макс";
     }
 
-    57%,
+    5%,
     91% {
-      content: "Maksi";
+      content: "Макси";
     }
 
-    58%,
+    6%,
     90% {
-      content: "Maksim";
+      content: "Максим";
     }
 
-    59%,
+    7%,
     89% {
-      content: "Maksim ";
+      content: "Максим ";
     }
 
-    60%,
+    8%,
     88% {
-      content: "Maksim L";
+      content: "Максим Л";
     }
 
-    61%,
+    9%,
     87% {
-      content: "Maksim Ly";
+      content: "Максим Ля";
     }
 
-    62%,
+    10%,
     86% {
-      content: "Maksim Lya";
+      content: "Максим Ляш";
     }
 
-    63%,
+    11%,
     85% {
-      content: "Maksim Lyas";
+      content: "Максим Ляше";
     }
 
-    64%,
+    12%,
     84% {
-      content: "Maksim Lyash";
+      content: "Максим Ляшен";
     }
 
-    65%,
+    13%,
     83% {
-      content: "Maksim Lyashe";
-    }
-
-    66%,
-    82% {
-      content: "Maksim Lyashen";
-    }
-
-    67%,
-    81% {
-      content: "Maksim Lyashenk";
-    }
-
-    68%,
-    80% {
-      content: "Maksim Lyashenko";
+      content: "Максим Ляшенко";
     }
   }
 }

@@ -11,7 +11,7 @@ export default async function PopularTags() {
         <div className={styles.popularTags__header}>
           <h2 className={styles.popularTags__title}>Популярные тэги</h2>
           <p className={styles.popularTags__text}>
-            Полуряные тэги моего блога!
+            Темы, которые чаще всего встречаются в моих заметках.
           </p>
         </div>
         <div className={styles.popularTags__content}>
