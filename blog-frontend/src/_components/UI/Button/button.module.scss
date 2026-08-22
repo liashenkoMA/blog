@@ -39,7 +39,7 @@
 
 .default {
   background: v.$gradient-primary;
-  color: v.$color-text-main;
+  color: v.$color-text-secondary;
 }
 
 .success {
@@ -48,5 +48,5 @@
 
 .danger {
   background-color: v.$color-button-error-bg;
-  color: v.$color-text-main;
+  color: v.$color-text-secondary;
 }
