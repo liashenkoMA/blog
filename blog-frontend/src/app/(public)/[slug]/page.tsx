@@ -70,10 +70,19 @@ export default async function Page({ params, searchParams }: IPageProps) {
       />
       <div className={styles.category__container}>
         <div className={styles.category__content}>
-          {articlePage.articles.map((art) => (
-            <ArticleCard key={art._id} article={art} />
-          ))}
-          <Pagination totalCount={articlePage.totalCount} slug={awaitedParams.slug} />
+          {articlePage.articles.length === 0 ? (
+            <p className={styles.category__text}>Статей пока нет</p>
+          ) : (
+            <>
+              {articlePage.articles.map((art) => (
+                <ArticleCard key={art._id} article={art} />
+              ))}
+              <Pagination
+                totalCount={articlePage.totalCount}
+                slug={awaitedParams.slug}
+              />
+            </>
+          )}
         </div>
         <Sidebar />
       </div>

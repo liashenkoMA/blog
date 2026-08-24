@@ -186,9 +186,9 @@ describe('ArticleService', () => {
         exec: jest.fn().mockResolvedValue(0),
       });
 
-      await expect(service.getCategoryArticles(mockSlug, 1)).rejects.toThrow(
-        NotFoundException,
-      );
+      const result = await service.getCategoryArticles(mockSlug, 1);
+
+      expect(result).toEqual({ articles: [], totalCount: 0 });
     });
 
     it('Успешное получение статей категории', async () => {
@@ -299,9 +299,9 @@ describe('ArticleService', () => {
         exec: jest.fn().mockResolvedValue(0),
       });
 
-      await expect(service.getTagArticles(mockSlug, 1)).rejects.toThrow(
-        NotFoundException,
-      );
+      const result = await service.getTagArticles(mockSlug, 1);
+
+      expect(result).toEqual({ articles: [], totalCount: 0 });
     });
 
     it('Успешное получение статей тэга', async () => {

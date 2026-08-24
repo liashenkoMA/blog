@@ -93,7 +93,7 @@ export class ArticleService {
       .exec();
 
     if (articles.length === 0) {
-      throw new NotFoundException('Статьи не найдены');
+      return { articles: [], totalCount: 0 };
     }
 
     return { articles, totalCount };
@@ -135,7 +135,7 @@ export class ArticleService {
       .exec();
 
     if (articles.length === 0) {
-      throw new NotFoundException('Статьи не найдены');
+      return { articles: [], totalCount: 0 };
     }
 
     return { articles, totalCount };

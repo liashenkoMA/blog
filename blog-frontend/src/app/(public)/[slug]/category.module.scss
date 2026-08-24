@@ -1,4 +1,5 @@
 @use "../../../mixins" as m;
+@use "../../../variables" as v;
 
 .category {
   max-width: 300px;
@@ -40,6 +41,16 @@
     @include m.respond-to(desktop-up) {
       grid-template-columns: 1fr;
       gap: 60px;
+    }
+  }
+
+  &__text {
+    font-size: v.$font-size-medium;
+    font-weight: v.$font-weight-regular;
+    line-height: v.$line-height-medium;
+    color: v.$color-text-main;
+    @include m.respond-to(tablet-up) {
+      font-size: v.$font-size-large;
     }
   }
 }
