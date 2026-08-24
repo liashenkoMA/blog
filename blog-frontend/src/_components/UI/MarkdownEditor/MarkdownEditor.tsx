@@ -5,6 +5,7 @@ import { Crepe } from "@milkdown/crepe";
 
 import "@milkdown/crepe/theme/common/style.css";
 import "@milkdown/crepe/theme/frame.css";
+import { postFile } from "@/_utils/client/fileApi";
 
 interface IMarkdownEditorProps {
   defaultValue?: string;
@@ -30,6 +31,16 @@ const MarkdownEditor = ({
     const crepe = new Crepe({
       root: editorRef.current,
       defaultValue,
+
+      featureConfigs: {
+        [Crepe.Feature.ImageBlock]: {
+          onUpload: async (file: File) => {
+            const url = await postFile(file);
+
+            return url.filePath;
+          },
+        },
+      },
     });
 
     crepe.on((listener) => {
