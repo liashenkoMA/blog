@@ -1,18 +1,218 @@
+@use "../../../variables" as v;
+@use "../../../mixins" as m;
+
 .article {
-  // общие стили контейнера
 }
 
 .text {
-  text-wrap: balance;
-  color: white;
-  margin: 0 0 20px;
-  line-height: 1.7;
+  padding-bottom: 30px;
+  color: v.$color-text-main;
+  font-size: v.$font-size-medium;
+  font-weight: v.$font-weight-regular;
+  line-height: v.$line-height-small;
+  @include m.respond-to(desktop-up) {
+    font-size: v.$font-size-large;
+    line-height: v.$line-height-medium-plus;
+  }
 }
 
 .title {
-  margin: 0 0 30px;
+  padding-bottom: 40px;
+  color: v.$color-text-heading;
+  font-size: v.$font-size-large;
+  font-weight: v.$font-weight-medium;
+  line-height: v.$line-height-medium-plus;
+  @include m.respond-to(desktop-up) {
+    font-size: v.$font-size-large-plus;
+    line-height: v.$line-height-large;
+  }
 }
 
 .subtitle {
-  margin: 40px 0 20px;
+  padding-bottom: 40px;
+  color: v.$color-text-heading;
+  font-size: v.$font-size-large-plus;
+  font-weight: v.$font-weight-medium;
+  line-height: v.$line-height-large;
+  @include m.respond-to(desktop-up) {
+    font-size: v.$font-size-x-large;
+    line-height: v.$line-height-x-large;
+  }
+}
+
+.subsubtitle {
+  padding-bottom: 30px;
+  color: v.$color-text-heading;
+  font-size: v.$font-size-large;
+  font-weight: v.$font-weight-medium;
+  line-height: v.$line-height-medium-plus;
+  @include m.respond-to(desktop-up) {
+    font-size: v.$font-size-large-plus;
+    line-height: v.$line-height-large;
+  }
+}
+
+.heading {
+  padding-bottom: 20px;
+  color: v.$color-text-heading;
+  font-size: v.$font-size-medium;
+  font-weight: v.$font-weight-medium;
+  line-height: v.$line-height-medium;
+  @include m.respond-to(desktop-up) {
+    font-size: v.$font-size-large;
+    line-height: v.$line-height-medium;
+  }
+}
+
+.list {
+  padding-left: 30px;
+  padding-bottom: 40px;
+  @include m.respond-to(desktop-up) {
+    padding-left: 80px;
+  }
+}
+
+.listNumbered {
+  padding-left: 30px;
+  padding-bottom: 40px;
+  @include m.respond-to(desktop-up) {
+    padding-left: 80px;
+  }
+}
+
+.listItem {
+  color: v.$color-text-main;
+  font-size: v.$font-size-medium;
+  font-weight: v.$font-weight-regular;
+  line-height: v.$line-height-small;
+  @include m.respond-to(desktop-up) {
+    font-size: v.$font-size-large;
+    line-height: v.$line-height-medium-plus;
+  }
+}
+
+.link {
+  color: v.$color-text-link;
+  @include m.hover {
+    cursor: pointer;
+    color: v.$color-text-hover;
+  }
+}
+
+.strong {
+  font-weight: v.$font-weight-semibold;
+}
+
+.italic {
+}
+
+.deleted {
+}
+
+.quote {
+  padding: 10px 5px;
+  margin-bottom: 30px;
+  background-color: v.$color-bg-element;
+  border: 1px solid v.$color-border;
+  border-radius: 8px;
+  .text {
+    padding: 0;
+    font-style: italic;
+    color: v.$color-text-main;
+    font-size: v.$font-size-medium;
+    font-weight: v.$font-weight-light;
+    line-height: v.$line-height-small;
+    @include m.respond-to(desktop-up) {
+      font-size: v.$font-size-large;
+      line-height: v.$line-height-medium-plus;
+      padding: 20px 20px;
+    }
+  }
+}
+
+.inlineCode {
+  overflow-wrap: anywhere;
+  color: v.$color-text-main;
+  font-size: v.$font-size-x-small;
+  font-weight: v.$font-weight-light;
+  line-height: v.$line-height-x-small;
+  @include m.respond-to(desktop-up) {
+    font-size: v.$font-size-small;
+    line-height: v.$line-height-small;
+  }
+  background-color: v.$color-bg-element;
+  border: 1px solid v.$color-border;
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+
+.codeBlock {
+  padding: 10px 5px;
+  margin-bottom: 30px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background-color: v.$color-bg-element;
+  border: 1px solid v.$color-border;
+  border-radius: 8px;
+  @include m.respond-to(desktop-up) {
+    padding: 15px;
+    border-radius: 16px;
+  }
+
+  .inlineCode {
+    padding: 0;
+    border: none;
+    border-radius: 0;
+  }
+}
+
+.image {
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+  border: 1px solid v.$color-border;
+  border-radius: 10px;
+  @include m.respond-to(tablet-up) {
+    height: 450px;
+    width: 720px;
+    border-radius: 20px;
+  }
+  @include m.respond-to(desktop-up) {
+    width: 600px;
+  }
+  @include m.respond-to(desktop-large) {
+    width: 920px;
+  }
+  @include m.respond-to(desktop-xl) {
+    width: 1080px;
+  }
+}
+
+.separator {
+}
+
+.lineBreak {
+}
+
+.tableWrapper {
+}
+
+.table {
+}
+
+.tableHead {
+}
+
+.tableBody {
+}
+
+.tableRow {
+}
+
+.tableHeader {
+}
+
+.tableCell {
+}
+
+.checkbox {
 }
