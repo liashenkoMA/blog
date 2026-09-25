@@ -7,12 +7,14 @@ import { ArticleDto, ArticleListResponseDto } from './article.schema.dto';
 import { Category } from '../categories/categories.schema';
 import { Tag } from '../tags/tags.schema';
 import { Types } from 'mongoose';
+import { REDIS_CLIENT } from '../../shared/constants/redis.constants';
 
 describe('ArticleService', () => {
   let service: ArticleService;
   let mockArticleModel;
   let mockCategoryModel;
   let mockTagModel;
+  let mockRedisClient;
 
   beforeEach(async () => {
     jest.resetAllMocks();
@@ -25,9 +27,22 @@ describe('ArticleService', () => {
 
     mockCategoryModel = jest.fn();
     mockCategoryModel.findOne = jest.fn();
+    mockCategoryModel.findById = jest.fn();
 
     mockTagModel = jest.fn();
     mockTagModel.findOne = jest.fn();
+    mockTagModel.find = jest.fn();
+
+    mockRedisClient = {
+      get: jest.fn().mockResolvedValue(null),
+      set: jest.fn().mockResolvedValue('OK'),
+      del: jest.fn().mockResolvedValue(1),
+      scanIterator: jest.fn().mockReturnValue(
+        (async function* () {
+          yield [];
+        })(),
+      ),
+    };
 
     const module: TestingModule = await Test.createTestingModule({
       providers: [
@@ -43,6 +58,10 @@ describe('ArticleService', () => {
         {
           provide: getModelToken(Tag.name),
           useValue: mockTagModel,
+        },
+        {
+          provide: REDIS_CLIENT,
+          useValue: mockRedisClient,
         },
       ],
     }).compile();
@@ -65,6 +84,30 @@ describe('ArticleService', () => {
           'NestJS позволяет создавать серверные приложения на TypeScript.',
       };
 
+      const mockCategory = {
+        _id: 'category-id',
+        slug: 'backend',
+      };
+
+      const mockTags = [
+        {
+          _id: 'tag-id-1',
+          slug: 'nestjs',
+        },
+        {
+          _id: 'tag-id-2',
+          slug: 'typescript',
+        },
+      ];
+
+      mockCategoryModel.findById.mockReturnValue({
+        exec: jest.fn().mockResolvedValue(mockCategory),
+      });
+
+      mockTagModel.find.mockReturnValue({
+        exec: jest.fn().mockResolvedValue(mockTags),
+      });
+
       mockArticleModel.create.mockResolvedValue({});
 
       const result = await service.createArticle(mockArticle);
@@ -78,6 +121,19 @@ describe('ArticleService', () => {
         tags: ['tag-id-1', 'tag-id-2'],
       });
       expect(mockArticleModel.create).toHaveBeenCalledTimes(1);
+      expect(mockRedisClient.del).toHaveBeenCalledWith('articles:last');
+      expect(mockRedisClient.scanIterator).toHaveBeenCalledWith({
+        MATCH: 'articles:page:*',
+      });
+      expect(mockRedisClient.scanIterator).toHaveBeenCalledWith({
+        MATCH: 'category:backend:page:*',
+      });
+      expect(mockRedisClient.scanIterator).toHaveBeenCalledWith({
+        MATCH: 'tag:nestjs:page:*',
+      });
+      expect(mockRedisClient.scanIterator).toHaveBeenCalledWith({
+        MATCH: 'tag:typescript:page:*',
+      });
     });
   });
 
@@ -142,6 +198,24 @@ describe('ArticleService', () => {
         status: ArticleStatus.PUBLISHED,
       });
       expect(mockArticleModel.find).toHaveBeenCalledTimes(1);
+      expect(mockRedisClient.set).toHaveBeenCalledWith(
+        'articles:last',
+        JSON.stringify(mockResponse),
+        { EX: 3600 },
+      );
+    });
+
+    it('Получение последних статей из кэша', async () => {
+      const mockResponse = [];
+
+      mockRedisClient.get.mockResolvedValue(JSON.stringify(mockResponse));
+
+      const result = await service.getLastArticles();
+
+      expect(result).toEqual(mockResponse);
+      expect(mockRedisClient.get).toHaveBeenCalledWith('articles:last');
+      expect(mockArticleModel.find).not.toHaveBeenCalled();
+      expect(mockRedisClient.set).not.toHaveBeenCalled();
     });
   });
 
@@ -254,6 +328,36 @@ describe('ArticleService', () => {
         category: 'category-id',
         status: ArticleStatus.PUBLISHED,
       });
+      expect(mockRedisClient.set).toHaveBeenCalledWith(
+        'category:backend:page:1',
+        JSON.stringify({
+          articles: mockResponse,
+          totalCount: 1,
+        }),
+        { EX: 3600 },
+      );
+    });
+
+    it('Получение статей категории из кэша', async () => {
+      const mockSlug = 'backend';
+
+      const mockResponse = {
+        articles: [],
+        totalCount: 10,
+      };
+
+      mockRedisClient.get.mockResolvedValue(JSON.stringify(mockResponse));
+
+      const result = await service.getCategoryArticles(mockSlug, 2);
+
+      expect(result).toEqual(mockResponse);
+      expect(mockRedisClient.get).toHaveBeenCalledWith(
+        'category:backend:page:2',
+      );
+      expect(mockCategoryModel.findOne).not.toHaveBeenCalled();
+      expect(mockArticleModel.find).not.toHaveBeenCalled();
+      expect(mockArticleModel.countDocuments).not.toHaveBeenCalled();
+      expect(mockRedisClient.set).not.toHaveBeenCalled();
     });
   });
 
@@ -367,6 +471,34 @@ describe('ArticleService', () => {
         tags: 'tag-id',
         status: ArticleStatus.PUBLISHED,
       });
+      expect(mockRedisClient.set).toHaveBeenCalledWith(
+        'tag:nestjs:page:1',
+        JSON.stringify({
+          articles: mockResponse,
+          totalCount: 1,
+        }),
+        { EX: 3600 },
+      );
+    });
+
+    it('Получение статей тэга из кэша', async () => {
+      const mockSlug = 'nestjs';
+
+      const mockResponse = {
+        articles: [],
+        totalCount: 10,
+      };
+
+      mockRedisClient.get.mockResolvedValue(JSON.stringify(mockResponse));
+
+      const result = await service.getTagArticles(mockSlug, 2);
+
+      expect(result).toEqual(mockResponse);
+      expect(mockRedisClient.get).toHaveBeenCalledWith('tag:nestjs:page:2');
+      expect(mockTagModel.findOne).not.toHaveBeenCalled();
+      expect(mockArticleModel.find).not.toHaveBeenCalled();
+      expect(mockArticleModel.countDocuments).not.toHaveBeenCalled();
+      expect(mockRedisClient.set).not.toHaveBeenCalled();
     });
   });
 
@@ -380,13 +512,27 @@ describe('ArticleService', () => {
         exec: jest.fn().mockResolvedValue([]),
       });
 
-      await expect(service.getAllArticles(1)).rejects.toThrow(
-        NotFoundException,
-      );
+      mockArticleModel.countDocuments.mockReturnValue({
+        exec: jest.fn().mockResolvedValue(0),
+      });
+
+      const result = await service.getAllArticles(1);
+
+      expect(result).toEqual({
+        articles: [],
+        totalCount: 0,
+      });
       expect(mockArticleModel.find).toHaveBeenCalledWith({
         status: ArticleStatus.PUBLISHED,
       });
-      expect(mockArticleModel.find).toHaveBeenCalledTimes(1);
+      expect(mockRedisClient.set).toHaveBeenCalledWith(
+        'articles:page:1',
+        JSON.stringify({
+          articles: [],
+          totalCount: 0,
+        }),
+        { EX: 3600 },
+      );
     });
 
     it('Успешное получение всех статей', async () => {
@@ -441,6 +587,31 @@ describe('ArticleService', () => {
       expect(mockArticleModel.countDocuments).toHaveBeenCalledWith({
         status: ArticleStatus.PUBLISHED,
       });
+      expect(mockRedisClient.set).toHaveBeenCalledWith(
+        'articles:page:1',
+        JSON.stringify({
+          articles: mockResponse,
+          totalCount: 1,
+        }),
+        { EX: 3600 },
+      );
+    });
+
+    it('Получение списка статей из кэша', async () => {
+      const mockResponse = {
+        articles: [],
+        totalCount: 10,
+      };
+
+      mockRedisClient.get.mockResolvedValue(JSON.stringify(mockResponse));
+
+      const result = await service.getAllArticles(2);
+
+      expect(result).toEqual(mockResponse);
+      expect(mockRedisClient.get).toHaveBeenCalledWith('articles:page:2');
+      expect(mockArticleModel.find).not.toHaveBeenCalled();
+      expect(mockArticleModel.countDocuments).not.toHaveBeenCalled();
+      expect(mockRedisClient.set).not.toHaveBeenCalled();
     });
   });
 
@@ -505,6 +676,52 @@ describe('ArticleService', () => {
         status: ArticleStatus.PUBLISHED,
       });
       expect(mockArticleModel.findOne).toHaveBeenCalledTimes(1);
+      expect(mockRedisClient.set).toHaveBeenCalledWith(
+        'article:nestjs',
+        JSON.stringify(mockResponse),
+        { EX: 3600 },
+      );
+    });
+
+    it('Получение статьи из кэша', async () => {
+      const mockSlug = 'nestjs';
+
+      const mockResponse = {
+        _id: 'article-id',
+        slug: mockSlug,
+        title: 'NestJS',
+        h1: 'Разработка на NestJS',
+        description: 'Статья о NestJS',
+        category: {
+          _id: 'category-id',
+          slug: 'backend',
+          name: 'Backend',
+          title: 'Backend',
+          description: 'Backend разработка',
+          image: '/images/backend.jpg',
+          imageAlt: 'Backend',
+        },
+        tags: [],
+        image: '/images/nestjs.jpg',
+        imageAlt: 'NestJS',
+        content: 'Текст статьи',
+        readingTime: 1,
+        status: ArticleStatus.PUBLISHED,
+        publishedAt: new Date(),
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      };
+
+      const cachedResponse = JSON.stringify(mockResponse);
+
+      mockRedisClient.get.mockResolvedValue(cachedResponse);
+
+      const result = await service.getArticle(mockSlug);
+
+      expect(result).toEqual(JSON.parse(cachedResponse));
+      expect(mockRedisClient.get).toHaveBeenCalledWith('article:nestjs');
+      expect(mockArticleModel.findOne).not.toHaveBeenCalled();
+      expect(mockRedisClient.set).not.toHaveBeenCalled();
     });
   });
 });

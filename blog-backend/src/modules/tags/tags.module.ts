@@ -4,11 +4,13 @@ import { Tag, TagSchema } from './tags.schema';
 import { TagsController } from './tags.controller';
 import { TagsService } from './tags.service';
 import { UserModule } from '../user/user.module';
+import { RedisModule } from '@/src/redis/redis.module';
 
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: Tag.name, schema: TagSchema }]),
     UserModule,
+    RedisModule,
   ],
   controllers: [TagsController],
   providers: [TagsService],

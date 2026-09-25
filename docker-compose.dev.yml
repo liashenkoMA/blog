@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   blog-backend:
     build:
@@ -16,6 +14,7 @@ services:
     command: npm run start:dev
     depends_on:
       - blog-mongo
+      - blog-redis
 
   blog-mongo:
     image: mongo:7
@@ -24,6 +23,12 @@ services:
       - "27018:27017"
     volumes:
       - blog_mongo_data:/data/db
+
+  blog-redis:
+    image: redis:8
+    container_name: blog-redis-dev
+    ports:
+      - "6379:6379"
 
   blog-frontend:
     build:

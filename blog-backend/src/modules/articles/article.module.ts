@@ -6,6 +6,7 @@ import { Tag, TagSchema } from '../tags/tags.schema';
 import { ArticleController } from './article.controller';
 import { ArticleService } from './article.service';
 import { UserModule } from '../user/user.module';
+import { RedisModule } from '../../redis/redis.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { UserModule } from '../user/user.module';
       },
     ]),
     UserModule,
+    RedisModule,
   ],
   controllers: [ArticleController],
   providers: [ArticleService],

@@ -81,7 +81,6 @@ export function ArticleContent({ content }: ArticleContentProps) {
                 alt={alt ?? ""}
                 width={300}
                 height={200}
-                unoptimized // УБРАТЬ КАК ЗАКОНЧУ ОФОРМЛЕНИЕ
                 className={styles.image}
               />
             ) : null,

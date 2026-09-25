@@ -6,10 +6,12 @@ import { FileModule } from './modules/file/file.module';
 import { CategoriesModule } from './modules/categories/categories.module';
 import { TagsModule } from './modules/tags/tags.module';
 import { ArticlesModule } from './modules/articles/article.module';
+import { RedisModule } from './redis/redis.module';
 
 @Module({
   imports: [
     MongooseModule.forRoot(process.env.MONGO_URI),
+    RedisModule,
     AuthModule,
     UserModule,
     FileModule,
