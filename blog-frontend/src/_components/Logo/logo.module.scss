@@ -8,8 +8,8 @@
 
   &__image {
     @include m.respond-to(tablet-up) {
-      width: 88px;
-      height: 52px;
+      height: 42px;
+      width: auto;
     }
   }
 
